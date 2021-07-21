@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "../components/Layout";
 import Image from "next/image";
-import Landingsvg from "../components/Landingsvg";
+import landingPage from "../public/landingPage.png";
 
 export default function Home() {
 	return (
@@ -12,12 +12,24 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className="grid grid-cols-2">
-				<div className="my-32 mx-0 mr-4 font-semibold text-5xl">
+			<div className="grid grid-cols-2 gap-8 items-center justify-center">
+				<div className="mr-20 font-semibold text-5xl">
 					<h1>Aviating Your Efficiency To Code</h1>
+					<button className="bg-[#1E2E46] mt-10 hover:bg-[#EFF0F2] hover:text-[#1E2E46] text-white font-bold py-2 px-4 rounded text-lg">
+						Subscribe
+					</button>
 				</div>
-				<Landingsvg />
+				<div className="justify-self-center">
+					<Image
+						src={landingPage}
+						alt="landing page"
+						width={600}
+						height={500}
+					/>
+				</div>
 			</div>
 		</Layout>
 	);
 }
+
+// my-32 mx-0 mr-20
