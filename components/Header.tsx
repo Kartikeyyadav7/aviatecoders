@@ -3,7 +3,7 @@ import { Sun, Volume2 } from "react-feather";
 
 const Header: React.FC = () => {
 	return (
-		<header className="max-w-screen-lg m-8 container mx-auto px-5 grid grid-cols-2 font-sans font-medium">
+		<header className="max-w-screen-xl m-8 container mx-auto px-5 grid grid-cols-2 font-sans font-medium">
 			<div className="flex items-center justify-center justify-self-start">
 				<div className="mr-16 font-sans font-semibold ">
 					<Link href="/">

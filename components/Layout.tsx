@@ -11,7 +11,7 @@ const Layout: React.FC<Props> = ({ children }) => {
 		<>
 			<Meta />
 			<Header />
-			<div className="max-w-screen-lg">
+			<div className="max-w-screen-xl m-8  mx-auto px-5">
 				<main>{children}</main>
 			</div>
 			{/* <Footer /> */}
