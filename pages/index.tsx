@@ -13,9 +13,7 @@ export default function Home() {
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 				<Container>
-					<main>
-						<h1 className="font-body font-semibold">Welcome to /</h1>
-					</main>
+					<main></main>
 				</Container>
 			</Layout>
 		</div>
