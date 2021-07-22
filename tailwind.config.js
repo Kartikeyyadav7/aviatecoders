@@ -6,6 +6,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				sans: ["Inter"],
+				transitionDelay: ['hover', 'focus'],
 			},
 		},
 	},
@@ -13,4 +14,9 @@ module.exports = {
 		extend: {},
 	},
 	plugins: [],
+	
+		images: {
+		  domains: ['pixabay.com'],
+		},
+	  
 };
