@@ -2,6 +2,7 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import Image from "next/image";
 import landingPage from "../public/landingPage.png";
+import BlogCard from "../components/BlogCard";
 
 export default function Home() {
 	return (
@@ -28,7 +29,9 @@ export default function Home() {
 					/>
 				</div>
 			</div>
+			<BlogCard/>
 		</Layout>
+		
 	);
 }
 
