@@ -8,13 +8,7 @@ function Logo() {
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				<rect
-					width="65"
-					height="70"
-					rx="8"
-					fill="#BFC3CB"
-					fill-opacity="0.25"
-				/>
+				<rect width="65" height="70" rx="8" fill="#BFC3CB" fillOpacity="0.25" />
 				<path
 					d="M31.8034 15.8597C26.1808 15.8637 21.7995 19.0135 21.948 24.9617L14.6232 39.1136C14.6232 39.1136 13.0489 41.7656 13.035 23.5222C13.0317 19.1485 23.1565 9.32347 26.1535 5.0126L31.8034 15.8597Z"
 					fill="#1E2E46"

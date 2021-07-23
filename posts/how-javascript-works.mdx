@@ -1,0 +1,114 @@
+---
+title: How Javascript Works
+description: Understanding the inside mechanism of Javascript works
+seoTitle: All you need to know about how the language of Javascript works under the hood
+isPublished: true
+publishedOn: 2021-07-23
+author: Kartikey Yadav
+layout: blog
+---
+
+We have used Javascript many times but do we really know, how it works and how much of a powerful language it is
+
+Well for some of that curious fellow who wants to know everything about Javascript and how it works under the hood, this article might help you, lets go step by step and understand it, Let's go.
+
+So starting with the basics, we all know that the computer knows only 1's and 0's so how are we able to communicate with the computer using Js, any guesses, yeah we use the Javascript Engine to do so
+
+## JavaScript Engine
+
+Now that I have told you about the engine you might have also heard of the famous Chrome's V8 engine which is written in C++ and it is responsible to make the computer understand what we write in Javascript and convert it into something the computer can understand.
+
+Are you wondering what Chrome's V8 engine does? , are there any other engines for other browsers like firefox or safari?
+
+Ok so, first of all, there are many engines out there and every browser uses a different engine and every engine is slightly different from each other like they have a different architecture like Mozilla Firefox uses Spidermonkey and it kind of has a different approach but in the end, they all solve the same problem.
+
+But the fun part is that everyone can build a Js engine and yes even you can build that engine but always understand that you have to abide by the rules and regulations which are set by EcmaScript which is the governing body which tells how to use JS and how it is standardized and it tells the engine creators how JS should work, but internally how you build your engine is entirely up to you as long as it is in within the standards.
+
+## Working of V8 Engine
+
+We will talk a bit about how the V8 engine works and how it works under the hood, the main reason we are talking about that particular engine is that it is very popular and one the most used engine but also because all other engines are mostly the same but little change here and there
+
+In the above-given pic, the Js file goes inside the engine and there is a long process there and it finally comes out of the engine as an optimized code that the computer can understand which is awesome.
+
+## Parser And AST
+
+So first the Js file is broken into packets and separated into different parts using the Parser and then the packets goes into the AST ( Abstract Syntax Tree ) which makes the packets into an organized tree-like structure after that it is passed into the Interpreter.
+
+For those who don't have a clue about interpreter and I will explain it in comparison to a compiler so it's easy to understand, if you want to know about that in form of carousal and stuff you can refer to our post on[ Instagram](https://instagram.com/aviatecoders)
+
+Now there are two ways a code in whichever language can be changed to machine code or a code which machine understands using the interpreter or a compiler, some languages use the interpreter to do it and others use the compiler and some use both.
+
+## Interpreter
+
+The interpreter translates and executes the program line by line as it runs by outputting bytecode and so you might have heard that Js is an Interpreted language but is not an entirely true statement, it actually depends, read ahead and you will find out.
+
+## Compiler
+
+The compiler on the other hand first scans the code that is it goes through your code till the last line and changes that code into something called Machine code and then it executes the program.
+
+## Interpreter Vs Compiler
+
+Now, why would we use something like interpreter over compiler, well interpreter can start fast because it just translates them on the fly and is quick to do so and as the browser uses Js we can understand that it is important for it runs fast because the user of the browser is waiting for the page to load or do something and if it doesn't it will create a bad user experience.
+
+But a problem arose that when the code used to big enough and it had loops to do certain tasks it would take time as it goes line by line and that thing got really messy and very slow.
+
+But in the case of a compiler we know it took some time to start up because it had to go through the entire code once and convert it into a different language altogether but it used to do some many optimizations into the code which made it work faster on a long run
+
+## JIT Compiler
+
+So the question is should we use an interpreter or a compiler because now we know there are pros and cons to both of them and then what happened is the engineers at the big companies thought of mixing the pros of both the worlds and make a JIT compiler or you may have heard as Just-in-time compilers to make their engine work faster
+
+Well now that we know about the compiler and interpreter, we move onto the next process that is when the code is transferred from AST to Interpreter it changes that code into byte code and what happens is that whenever there can be some optimizations done with the code it which is checked by the Profiler it is passed down to the compiler or the JIT compiler which takes the code and outputs an optimized code and this process runs in a loop again and again and eventually our code in Js becomes faster because optimizations are done again and again
+
+This is how the V8 engine works
+
+Now if you have noticed in the above figure there is a section of the Call Stack and the Memory Heap, you might have wondered what is the function of those things so let's see.
+
+## Call Stack
+
+First, let's see what a stack is, so Stack is a Data Structure that you can visualize like an array where you can only push and pop like remove and add elements at the end.
+
+Now we know what call is, it's just the calling of a function. Briefly, CallStack is the list of functions that are supposed to run by the interpreter for visual content we have a [post](https://www.instagram.com/p/CHNtqjiA-8z/) about this you might like to check that out.
+
+The Call Stack you can imagine it as the place where a function is executed one by one that is it forms a stack of functions that are happening in the program, you can go and visualize this in the Chrome browsers inspect tool and then to the sources tab where you can add a snippet and then run the code and there is a column to the right where you can see the Call Stack and it displays each process.
+
+How the call stack works is that when you start to execute a program and a function is called and goes onto the call stack after that the function returns something and then it is popped off the stack, after that another function is put on the stack and the same process continues until the whole program is executed.
+
+There are certain limitations to the call stack for adding functions and when the limit is over there is a stack overflow.
+
+## Memory Heap
+
+The Memory Heap is the block of place where you can store the variables, objects, arrays, and other stuff that is, it is just a place to store things. Similarly, when we start writing code the memory will get filled and because memory is limited then it will cause memory leaks.
+
+## Single-Threaded
+
+You might have heard of Js being a single-threaded language that means it is synchronous (it can only perform one task at a time ) it can't perform multiple tasks at one time as we have seen in the call stack. But the problem with that is we can't do multiple things simultaneously and this will create a lot of difficulties if only one task a user can perform on a browser at a time.
+
+## JavaScript Runtime
+
+To resolve this issue we use something called a JavaScript Runtime which helps in running Asynchronous code and it comes along with the Js engine with the browser. From the image given, there are a lot of things happening in this particular picture and we are going to understand the complete picture of how things are going to be done.
+
+We already know about the call stack and the memory heap and how it does the thing, now let's talk about Web API
+
+## Web API
+
+So Web Api's are shipped along with the browser as a part of JS Runtime, now to be very clear you might have heard of the window object which you would have used a couple of times while writing applications for the browser when you type window in the console you will be able to know all the web API's that are in your service
+
+The web APIs can do many things like sending HTTP requests, do changes to the DOM, delay an execution using the setTimeout() method, and many other things, using the web API we can make our code asynchronous that is we can let the web API do something in the background while we execute our JS code using the call stack and when the background process is finished we can put that into the call stack and finally get the result desired.
+
+## Callback Queue And Event Loop
+
+Now, what is the role of the callback queue and the event loop, so the callback queue is the place where the process of the web API goes after it is finished execution, after it is placed on the callback queue we need to check if we can move to the call stack and for doing this specific task event loop is required because for moving that task to the call stack we have to first check if the call stack is empty and secondly we have to see if the whole program is executed.
+And finally, when there is nothing on the call stack it is pushed and executed and popped off
+
+And that's it, these are the things that goes under the hood of JS and it's really interesting how things work together for giving us the best possible result and with such great speed, the normal user doesn't even know what happens when they search for something or just click a button but we as developers have the privilege of understanding these things.
+
+## Summary
+
+How can knowing these can help us, well by knowing these things you are aware and understand and can write better code that is well optimized for the engine and make it faster and in the end making the user experience much better.
+
+Was the article helpful? Do you have any doubts? Any topic you would like us to cover?
+
+Reach out to us on [](https://twitter.com/kartikey_yadav7)[Twitter](https://www.instagram.com/aviatecoders/) and [Instagram](https://www.instagram.com/aviatecoders/) where we try to provide more value in threads and carousal formats
+
+Happy Coding and keep learning :)
