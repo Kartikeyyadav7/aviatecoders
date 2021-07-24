@@ -28,10 +28,7 @@ const index: React.FC<BlogProps> = ({ posts }) => {
 			<ul>
 				{posts.map((post) => (
 					<li key={post.filePath}>
-						<Link
-							as={`/posts/${post.filePath.replace(/\.mdx?$/, "")}`}
-							href={`/posts/[slug]`}
-						>
+						<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
 							<a>{post.dataStringify.title}</a>
 						</Link>
 					</li>
@@ -44,9 +41,9 @@ const index: React.FC<BlogProps> = ({ posts }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
 	const posts = postFilePaths.map((filePath) => {
 		const source = fs.readFileSync(path.join(postPath, filePath));
-		console.log(source);
+		console.log("source", source);
 		const { content, data } = matter(source);
-		console.log("content", content, "data", data);
+		// console.log("content", content, "data", data);
 		const dataStringify = JSON.parse(JSON.stringify(data));
 		return {
 			content,
