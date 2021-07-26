@@ -9,7 +9,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 const readingTime = require("reading-time");
-import { postPath, getLatestPosts } from "../lib/mdx";
+import { postPath, getLatestPosts, postFilePaths } from "../lib/mdx";
 import React from "react";
 
 interface HomeProps {
@@ -31,6 +31,20 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ posts }) => {
+	const publishedPosts = posts.filter((post) => post.data.isPublished === true);
+	const datePublish = publishedPosts.map((date) => date.data.publishedOn);
+	// console.log(datePublish);
+	const sortedPosts = publishedPosts
+		.slice()
+		.sort(
+			(a, b) =>
+				new Date(b.data.publishedOn).valueOf() -
+				new Date(a.data.publishedOn).valueOf()
+		);
+
+	const getTopLatestPosts = sortedPosts.slice(0, 6);
+	// console.log("sortedPosts", sortedPosts);
+
 	return (
 		<Layout>
 			<Head>
@@ -55,11 +69,11 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 					/>
 				</div>
 			</div>
-			<div className="mr-20 font-semibold text-3xl mb-4">
+			<div className="mr-20 font-semibold text-3xl mb-4  ">
 				<h1>Our Latest Blogs</h1>
 			</div>
 			<div className="flex flex-wrap  ">
-				{posts.map((post) => (
+				{getTopLatestPosts.map((post) => (
 					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
 						<div key={post.filePath}>
 							<BlogCard
@@ -77,11 +91,11 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-	const posts = getLatestPosts.map((filePath) => {
+	const posts = postFilePaths.map((filePath) => {
 		const source = fs.readFileSync(path.join(postPath, filePath), "utf8");
-		// console.log(source);
 
 		const { content, data } = matter(source);
+
 		const stats = readingTime(content);
 		const timeForReading = stats.text;
 		return {
@@ -99,4 +113,3 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export default Home;
-// my-32 mx-0 mr-20
