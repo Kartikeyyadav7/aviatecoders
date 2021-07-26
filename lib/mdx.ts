@@ -8,4 +8,4 @@ export const postPath = path.join(process.cwd(), "posts");
 // postFilePaths is the list of all mdx files inside the POSTS_PATH directory
 export const postFilePaths = fs.readdirSync(postPath);
 
-console.log(postFilePaths);
+// console.log(postFilePaths);

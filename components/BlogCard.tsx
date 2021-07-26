@@ -27,7 +27,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 						{title}
 					</div>
 				</div>
-				<div className="px-6 pt-2 pb-1">
+				<div className="px-6 pb-1">
 					<span className="inline-block bg-gray-200 rounded-full px-3  text-sm font-semibold text-gray-700 mr-2 mb-2">
 						{timeForReading}
 					</span>

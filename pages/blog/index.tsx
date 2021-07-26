@@ -20,6 +20,7 @@ interface BlogProps {
 			publishedOn: Date;
 			author: string;
 			coverImage: string;
+			category: string;
 		};
 		filePath: string;
 		timeForReading: string;
@@ -27,6 +28,13 @@ interface BlogProps {
 }
 
 const Index: React.FC<BlogProps> = ({ posts }) => {
+	const WebDev = posts.filter((post) => post.data.category === "Webdev");
+	const Javascript = posts.filter(
+		(post) => post.data.category === "Javascript"
+	);
+	const ReactNative = posts.filter(
+		(post) => post.data.category === "React Native"
+	);
 	return (
 		<Layout>
 			<Head>
@@ -35,11 +43,45 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			{/* <div className="mr-20 font-semibold text-4xl">
-				<h1>Our Latest Blogs</h1>
-			</div> */}
-			<div className="flex flex-wrap justify-between ">
-				{posts.map((post) => (
+			<div className="mr-20 font-semibold text-2xl mb-5">
+				<h1>Web Development</h1>
+			</div>
+			<div className="flex flex-wrap ml-5  ">
+				{WebDev.map((post) => (
+					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
+						<div key={post.filePath}>
+							<BlogCard
+								title={post.data.title}
+								publishedOn={post.data.publishedOn}
+								coverImage={post.data.coverImage}
+								timeForReading={post.timeForReading}
+							/>
+						</div>
+					</Link>
+				))}
+			</div>
+			<div className="mr-20 font-semibold text-2xl mt-8 mb-5">
+				<h1>Javascript</h1>
+			</div>
+			<div className="flex flex-wrap ml-5 ">
+				{Javascript.map((post) => (
+					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
+						<div key={post.filePath}>
+							<BlogCard
+								title={post.data.title}
+								publishedOn={post.data.publishedOn}
+								coverImage={post.data.coverImage}
+								timeForReading={post.timeForReading}
+							/>
+						</div>
+					</Link>
+				))}
+			</div>
+			<div className="mr-20 font-semibold text-2xl mt-8 mb-5">
+				<h1>React Native</h1>
+			</div>
+			<div className="flex flex-wrap ml-5 ">
+				{ReactNative.map((post) => (
 					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
 						<div key={post.filePath}>
 							<BlogCard
