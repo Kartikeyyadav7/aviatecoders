@@ -1,0 +1,67 @@
+---
+title: What are IIFE in Javascript
+description: Explained IIFE concept in Javascript
+seoTitle: IIFE ( Immediately Invoked Function Expression) are an important concept we are going to understand exactly what problem does it solves in JS
+isPublished: true
+publishedOn: "2021-04-08"
+coverImage: "/blog/what-are-iife-in-javascript/cover.png"
+author: Kartikey Yadav
+category: Javascript
+layout: blog
+---
+
+<!--StartFragment-->
+
+IIFE (Immediately Invoked Function Expression)
+
+ONE of the important concepts of JavaScript is IIFE and so we will try to make you guys understand what it is and how it is useful
+
+From the things we have learned about execution context and scoping (refer to the previous blog [here](https://www.aviatecoders.com/execution-context-lexical-environmenet-scope-chain)) you might have noticed some issue and the problem is that whenever we define a variable we have to be careful to not repeat the same name twice or in other words avoiding namespace collisions in the global execution context
+
+Now this is not a big problem if you consider a small size application but when our application becomes big and when we have multiple developers working on the same project and we have multiple JS files and at times like that we encounter this problem
+
+Let's see why global variables are bad
+
+1. First if we define too many variables into the global scope we might end up filling our memory heap with so much data and it could crash our browser
+2. The second reason is that even if we don't have many variables there comes a problem like if we define the name of the variable same because it might happen so it will lead to other problems like changing the previous names actual data and create many bugs
+
+Even if we use different script tags and different Js files it all comes down to a single file and having the same names for the variable will lead to many bugs and problems and pollutes the global namespace
+
+But that's where IIFE comes which are Immediately Invoked Function Expression
+
+by reading the full form might have thought what the heck is this so let me know what it exactly is
+
+```javascript
+//IIFE
+(function () {
+	//code
+})();
+```
+
+As you can see this is an IIFE and it is also a function expression,
+
+You might ask why it is a function expression well when the JS engine parses through the code it doesn't encounter _function_ keyword instead it encounters "(" and so it is a function expression
+
+Now whatever you will write inside the IIFE will not be accessible to the outside function expression and because of that, it doesn't pollute the global namespace as simple as that.
+
+Remember that a function declaration can't be used as an IIFE and it can't be directly invoked if you do that then you will have a syntax error
+
+```javascript
+function(){
+  //code
+}()  // This will give syntax error
+```
+
+This idea of IIFE became very popular back in the day and many libraries still use it like jQuery use IIFE and its just a popular way to avoid namespace collisions
+
+But with the introduction of ES6 Modules and things like that not many applications now don't use IIFE but it really is a very intriguing concept and is often asked in interviews so there is no harm in learning them
+
+Was the article helpful? Do you have any doubts? Any topic you would like us to cover?
+
+Reach out to us on [Twitter](https://twitter.com/aviatecoders) and [Instagram](https://instagram.com/aviatecoders) where we try to provide more value in threads and carousal formats
+
+Thank You for your time
+
+Keep learning, Keep coding :)
+
+<!--EndFragment-->

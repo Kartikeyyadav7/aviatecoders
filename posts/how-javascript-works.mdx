@@ -3,10 +3,10 @@ title: How Javascript Works
 description: Understanding the inside mechanism of Javascript works
 seoTitle: All you need to know about how the language of Javascript works under the hood
 isPublished: true
-publishedOn: 2021-07-23
+publishedOn: "2020-11-06"
 coverImage: "/blog/how-javascript-works/cover.png"
 author: Kartikey Yadav
-category: Webdev
+category: Javascript
 layout: blog
 ---
 
@@ -29,6 +29,8 @@ But the fun part is that everyone can build a Js engine and yes even you can bui
 ## Working of V8 Engine
 
 We will talk a bit about how the V8 engine works and how it works under the hood, the main reason we are talking about that particular engine is that it is very popular and one the most used engine but also because all other engines are mostly the same but little change here and there
+
+<!-- ![Javascript Engine](/assets/js-engine.jpg "Javascript Engine") -->
 
 In the above-given pic, the Js file goes inside the engine and there is a long process there and it finally comes out of the engine as an optimized code that the computer can understand which is awesome.
 
@@ -90,6 +92,8 @@ You might have heard of Js being a single-threaded language that means it is syn
 
 To resolve this issue we use something called a JavaScript Runtime which helps in running Asynchronous code and it comes along with the Js engine with the browser. From the image given, there are a lot of things happening in this particular picture and we are going to understand the complete picture of how things are going to be done.
 
+<!-- ![Javascript Runtime](/assets/js-runtime.jpg "Javascript Runtime") -->
+
 We already know about the call stack and the memory heap and how it does the thing, now let's talk about Web API
 
 ## Web API
@@ -102,6 +106,8 @@ The web APIs can do many things like sending HTTP requests, do changes to the DO
 
 Now, what is the role of the callback queue and the event loop, so the callback queue is the place where the process of the web API goes after it is finished execution, after it is placed on the callback queue we need to check if we can move to the call stack and for doing this specific task event loop is required because for moving that task to the call stack we have to first check if the call stack is empty and secondly we have to see if the whole program is executed.
 And finally, when there is nothing on the call stack it is pushed and executed and popped off
+
+<!-- ![Celebrating](/assets/undraw_celebration_0jvk-1-.png "Celebrating") -->
 
 And that's it, these are the things that goes under the hood of JS and it's really interesting how things work together for giving us the best possible result and with such great speed, the normal user doesn't even know what happens when they search for something or just click a button but we as developers have the privilege of understanding these things.
 
