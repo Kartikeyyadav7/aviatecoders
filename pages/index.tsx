@@ -1,10 +1,36 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import Layout from "../components/Layout";
 import Image from "next/image";
 import landingPage from "../public/landingPage.png";
 import BlogCard from "../components/BlogCard";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+const readingTime = require("reading-time");
+import { postPath, getLatestPosts } from "../lib/mdx";
+import React from "react";
 
-export default function Home() {
+interface HomeProps {
+	posts: {
+		content: string;
+		data: {
+			title: string;
+			description: string;
+			seoTitle: string;
+			isPublished: boolean;
+			publishedOn: Date;
+			author: string;
+			coverImage: string;
+			category: string;
+		};
+		filePath: string;
+		timeForReading: string;
+	}[];
+}
+
+const Home: React.FC<HomeProps> = ({ posts }) => {
 	return (
 		<Layout>
 			<Head>
@@ -29,17 +55,48 @@ export default function Home() {
 					/>
 				</div>
 			</div>
-			<div className="mr-20 font-semibold text-4xl">
+			<div className="mr-20 font-semibold text-3xl mb-4">
 				<h1>Our Latest Blogs</h1>
 			</div>
-			{/* <div className="flex flex-wrap "> */}
-			{/* <BlogCard /> */}
-			{/* <BlogCard /> */}
-			{/* <BlogCard /> */}
-			{/* <BlogCard /> */}
-			{/* </div> */}
+			<div className="flex flex-wrap  ">
+				{posts.map((post) => (
+					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
+						<div key={post.filePath}>
+							<BlogCard
+								title={post.data.title}
+								publishedOn={post.data.publishedOn}
+								coverImage={post.data.coverImage}
+								timeForReading={post.timeForReading}
+							/>
+						</div>
+					</Link>
+				))}
+			</div>
 		</Layout>
 	);
-}
+};
 
+export const getStaticProps: GetStaticProps = async (context) => {
+	const posts = getLatestPosts.map((filePath) => {
+		const source = fs.readFileSync(path.join(postPath, filePath), "utf8");
+		// console.log(source);
+
+		const { content, data } = matter(source);
+		const stats = readingTime(content);
+		const timeForReading = stats.text;
+		return {
+			content,
+			data,
+			filePath,
+			timeForReading,
+		};
+	});
+	return {
+		props: {
+			posts,
+		},
+	};
+};
+
+export default Home;
 // my-32 mx-0 mr-20

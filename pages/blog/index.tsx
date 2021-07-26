@@ -8,6 +8,7 @@ import path from "path";
 import matter from "gray-matter";
 const readingTime = require("reading-time");
 import { postPath, postFilePaths } from "../../lib/mdx";
+import { Link as IconLink } from "react-feather";
 
 interface BlogProps {
 	posts: {
@@ -38,13 +39,22 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 	return (
 		<Layout>
 			<Head>
-				<title>Blog</title>
+				<title>Blog | Aviate Coder</title>
 				<meta name="description" content="Blog page of Aviate Coders" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className="mr-20 font-semibold text-2xl mb-5">
-				<h1>Web Development</h1>
+			<div className="mr-20 font-semibold text-2xl mb-5 flex items-center">
+				<div className="opacity-0 hover:opacity-100 hover:transition hover:duration-300 hover:ease-in-out">
+					<IconLink />
+				</div>
+				<div className="ml-2">
+					<Link href="/blog/webdev">
+						<a>
+							<h1>Web Development</h1>
+						</a>
+					</Link>
+				</div>
 			</div>
 			<div className="flex flex-wrap ml-5  ">
 				{WebDev.map((post) => (
@@ -60,8 +70,17 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 					</Link>
 				))}
 			</div>
-			<div className="mr-20 font-semibold text-2xl mt-8 mb-5">
-				<h1>Javascript</h1>
+			<div className="mr-20 font-semibold text-2xl mt-8 mb-5 flex items-center">
+				<div className="opacity-0 hover:opacity-100 hover:transition hover:duration-300 hover:ease-in-out">
+					<IconLink />
+				</div>
+				<div className="ml-2">
+					<Link href="/blog/javascript">
+						<a>
+							<h1>Javascript</h1>
+						</a>
+					</Link>
+				</div>
 			</div>
 			<div className="flex flex-wrap ml-5 ">
 				{Javascript.map((post) => (
@@ -77,8 +96,17 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 					</Link>
 				))}
 			</div>
-			<div className="mr-20 font-semibold text-2xl mt-8 mb-5">
-				<h1>React Native</h1>
+			<div className="mr-20 font-semibold text-2xl mt-8 mb-5 flex items-center">
+				<div className="opacity-0 hover:opacity-100 hover:transition hover:duration-300 hover:ease-in-out">
+					<IconLink />
+				</div>
+				<div className="ml-2">
+					<Link href="/blog/reactnative">
+						<a>
+							<h1>React Native</h1>
+						</a>
+					</Link>
+				</div>
 			</div>
 			<div className="flex flex-wrap ml-5 ">
 				{ReactNative.map((post) => (
@@ -100,7 +128,7 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
 	const posts = postFilePaths.map((filePath) => {
-		const source = fs.readFileSync(path.join(postPath, filePath));
+		const source = fs.readFileSync(path.join(postPath, filePath), "utf8");
 		const { content, data } = matter(source);
 		const stats = readingTime(content);
 		const timeForReading = stats.text;
