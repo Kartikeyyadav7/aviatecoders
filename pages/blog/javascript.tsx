@@ -29,7 +29,7 @@ interface JavascriptProps {
 
 const Javascript: React.FC<JavascriptProps> = ({ posts }) => {
 	const Javascript = posts.filter(
-		(post) => post.data.category === "Javascript"
+		(post) => post.data.category === "javascript"
 	);
 
 	return (
