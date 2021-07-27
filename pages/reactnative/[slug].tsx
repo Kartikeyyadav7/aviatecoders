@@ -1,3 +1,4 @@
+import Head from "next/head";
 import fs from "fs";
 import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
@@ -5,7 +6,8 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 import Layout from "../../components/Layout";
-import { postFilePaths, postPath } from "../../lib/mdx";
+import BlogLayout from "../../layout/BlogLayout";
+import { postFilePaths, postPath, getHeadings } from "../../lib/mdx";
 
 interface ReactNativePageProps {
 	frontMatter: {
@@ -24,10 +26,14 @@ const ReactNativePage: React.FC<ReactNativePageProps> = ({
 }) => {
 	return (
 		<Layout>
-			<div>{frontMatter.title}</div>
-			<main>
+			<Head>
+				<title>{frontMatter.title} | Aviate Coders</title>
+				<meta name="description" content={frontMatter.description} />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<BlogLayout frontMatter={frontMatter}>
 				<MDXRemote {...source} />
-			</main>
+			</BlogLayout>
 		</Layout>
 	);
 };
@@ -38,7 +44,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	if (params) {
 		const postFilePath = path.join(postPath, `${params.slug}.mdx`);
 		const source = fs.readFileSync(postFilePath, "utf8");
-
+		const headings = getHeadings(source);
+		console.log(headings);
 		const result = matter(source);
 		data = result.data;
 		content = result.content;

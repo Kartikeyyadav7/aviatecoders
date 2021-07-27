@@ -1,11 +1,13 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Head from "next/head";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 import Layout from "../../components/Layout";
-import { postFilePaths, postPath } from "../../lib/mdx";
+import BlogLayout from "../../layout/BlogLayout";
+import { postFilePaths, postPath, getHeadings } from "../../lib/mdx";
 
 interface JavascriptPageProps {
 	frontMatter: {
@@ -24,10 +26,14 @@ const JavascriptPage: React.FC<JavascriptPageProps> = ({
 }) => {
 	return (
 		<Layout>
-			<div>{frontMatter.title}</div>
-			<main>
+			<Head>
+				<title>{frontMatter.title} | Aviate Coders </title>
+				<meta name="description" content={frontMatter.description} />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
+			<BlogLayout frontMatter={frontMatter}>
 				<MDXRemote {...source} />
-			</main>
+			</BlogLayout>
 		</Layout>
 	);
 };
@@ -38,18 +44,31 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	if (params) {
 		const postFilePath = path.join(postPath, `${params.slug}.mdx`);
 		const source = fs.readFileSync(postFilePath, "utf8");
-
+		// console.log(source);
 		const result = matter(source);
 		data = result.data;
 		content = result.content;
+		console.log(typeof content);
+		console.log(typeof JSON.stringify(content));
+		const headings = getHeadings(JSON.stringify(content));
+		console.log(headings);
+		// console.log(JSON.stringify(content));
 
 		mdxSource = await serialize(content, {
+			// mdxOptions: {
+			// 	remarkPlugins: [],
+			// 	rehypePlugins: [
+			// 		require('rehype-slug'),
+			// require('rehype-autolink-headings'),
+			// require('rehype-toc'),
+			// ],
+			//   },
 			scope: data,
 		});
 	}
 
 	const source = mdxSource;
-	// console.log(source);
+
 	const frontMatter = data;
 	// console.log(frontMatter);
 

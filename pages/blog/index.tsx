@@ -63,7 +63,7 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 						href={`/webdev/${post.filePath.replace(/\.mdx?$/, "")}`}
 					>
 						<a>
-							<div key={post.filePath}>
+							<div key={post.filePath} className="h-full">
 								<BlogCard
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}
@@ -94,7 +94,7 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 						href={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
 					>
 						<a>
-							<div key={post.filePath}>
+							<div key={post.filePath} className="h-full">
 								<BlogCard
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}
@@ -125,7 +125,7 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 						href={`/reactnative/${post.filePath.replace(/\.mdx?$/, "")}`}
 					>
 						<a>
-							<div key={post.filePath}>
+							<div key={post.filePath} className="h-full">
 								<BlogCard
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}

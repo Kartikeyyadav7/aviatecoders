@@ -83,7 +83,7 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 						)}`}
 					>
 						<a>
-							<div key={post.filePath}>
+							<div key={post.filePath} className="h-full">
 								<BlogCard
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}

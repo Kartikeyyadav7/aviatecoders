@@ -50,7 +50,7 @@ const Javascript: React.FC<JavascriptProps> = ({ posts }) => {
 						href={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
 					>
 						<a>
-							<div key={post.filePath}>
+							<div key={post.filePath} className="h-full">
 								<BlogCard
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}
