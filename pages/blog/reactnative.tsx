@@ -29,7 +29,7 @@ interface ReactNativeProps {
 
 const ReactNative: React.FC<ReactNativeProps> = ({ posts }) => {
 	const ReactNative = posts.filter(
-		(post) => post.data.category === "React Native"
+		(post) => post.data.category === "reactnative"
 	);
 
 	return (
@@ -45,15 +45,20 @@ const ReactNative: React.FC<ReactNativeProps> = ({ posts }) => {
 			</div>
 			<div className="flex flex-wrap ml-5 ">
 				{ReactNative.map((post) => (
-					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
-						<div key={post.filePath}>
-							<BlogCard
-								title={post.data.title}
-								publishedOn={post.data.publishedOn}
-								coverImage={post.data.coverImage}
-								timeForReading={post.timeForReading}
-							/>
-						</div>
+					<Link
+						as={`/reactnative/${post.filePath.replace(/\.mdx?$/, "")}`}
+						href={`/reactnative/${post.filePath.replace(/\.mdx?$/, "")}`}
+					>
+						<a>
+							<div key={post.filePath}>
+								<BlogCard
+									title={post.data.title}
+									publishedOn={post.data.publishedOn}
+									coverImage={post.data.coverImage}
+									timeForReading={post.timeForReading}
+								/>
+							</div>
+						</a>
 					</Link>
 				))}
 			</div>

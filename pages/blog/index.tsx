@@ -29,12 +29,12 @@ interface BlogProps {
 }
 
 const Index: React.FC<BlogProps> = ({ posts }) => {
-	const WebDev = posts.filter((post) => post.data.category === "Webdev");
+	const WebDev = posts.filter((post) => post.data.category === "webdev");
 	const Javascript = posts.filter(
-		(post) => post.data.category === "Javascript"
+		(post) => post.data.category === "javascript"
 	);
 	const ReactNative = posts.filter(
-		(post) => post.data.category === "React Native"
+		(post) => post.data.category === "reactnative"
 	);
 	return (
 		<Layout>
@@ -58,15 +58,20 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 			</div>
 			<div className="flex flex-wrap ml-5  ">
 				{WebDev.map((post) => (
-					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
-						<div key={post.filePath}>
-							<BlogCard
-								title={post.data.title}
-								publishedOn={post.data.publishedOn}
-								coverImage={post.data.coverImage}
-								timeForReading={post.timeForReading}
-							/>
-						</div>
+					<Link
+						as={`/webdev/${post.filePath.replace(/\.mdx?$/, "")}`}
+						href={`/webdev/${post.filePath.replace(/\.mdx?$/, "")}`}
+					>
+						<a>
+							<div key={post.filePath}>
+								<BlogCard
+									title={post.data.title}
+									publishedOn={post.data.publishedOn}
+									coverImage={post.data.coverImage}
+									timeForReading={post.timeForReading}
+								/>
+							</div>
+						</a>
 					</Link>
 				))}
 			</div>
@@ -84,15 +89,20 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 			</div>
 			<div className="flex flex-wrap ml-5 ">
 				{Javascript.map((post) => (
-					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
-						<div key={post.filePath}>
-							<BlogCard
-								title={post.data.title}
-								publishedOn={post.data.publishedOn}
-								coverImage={post.data.coverImage}
-								timeForReading={post.timeForReading}
-							/>
-						</div>
+					<Link
+						as={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
+						href={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
+					>
+						<a>
+							<div key={post.filePath}>
+								<BlogCard
+									title={post.data.title}
+									publishedOn={post.data.publishedOn}
+									coverImage={post.data.coverImage}
+									timeForReading={post.timeForReading}
+								/>
+							</div>
+						</a>
 					</Link>
 				))}
 			</div>
@@ -110,15 +120,20 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 			</div>
 			<div className="flex flex-wrap ml-5 ">
 				{ReactNative.map((post) => (
-					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
-						<div key={post.filePath}>
-							<BlogCard
-								title={post.data.title}
-								publishedOn={post.data.publishedOn}
-								coverImage={post.data.coverImage}
-								timeForReading={post.timeForReading}
-							/>
-						</div>
+					<Link
+						as={`/reactnative/${post.filePath.replace(/\.mdx?$/, "")}`}
+						href={`/reactnative/${post.filePath.replace(/\.mdx?$/, "")}`}
+					>
+						<a>
+							<div key={post.filePath}>
+								<BlogCard
+									title={post.data.title}
+									publishedOn={post.data.publishedOn}
+									coverImage={post.data.coverImage}
+									timeForReading={post.timeForReading}
+								/>
+							</div>
+						</a>
 					</Link>
 				))}
 			</div>

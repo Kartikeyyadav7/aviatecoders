@@ -9,7 +9,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 const readingTime = require("reading-time");
-import { postPath, getLatestPosts, postFilePaths } from "../lib/mdx";
+import { postPath, postFilePaths } from "../lib/mdx";
 import React from "react";
 
 interface HomeProps {
@@ -33,7 +33,6 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ posts }) => {
 	const publishedPosts = posts.filter((post) => post.data.isPublished === true);
 	const datePublish = publishedPosts.map((date) => date.data.publishedOn);
-	// console.log(datePublish);
 	const sortedPosts = publishedPosts
 		.slice()
 		.sort(
@@ -43,7 +42,6 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 		);
 
 	const getTopLatestPosts = sortedPosts.slice(0, 6);
-	// console.log("sortedPosts", sortedPosts);
 
 	return (
 		<Layout>
@@ -74,15 +72,26 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 			</div>
 			<div className="flex flex-wrap  ">
 				{getTopLatestPosts.map((post) => (
-					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
-						<div key={post.filePath}>
-							<BlogCard
-								title={post.data.title}
-								publishedOn={post.data.publishedOn}
-								coverImage={post.data.coverImage}
-								timeForReading={post.timeForReading}
-							/>
-						</div>
+					<Link
+						as={`/${post.data.category}/${post.filePath.replace(
+							/\.mdx?$/,
+							""
+						)}`}
+						href={`/${post.data.category}/${post.filePath.replace(
+							/\.mdx?$/,
+							""
+						)}`}
+					>
+						<a>
+							<div key={post.filePath}>
+								<BlogCard
+									title={post.data.title}
+									publishedOn={post.data.publishedOn}
+									coverImage={post.data.coverImage}
+									timeForReading={post.timeForReading}
+								/>
+							</div>
+						</a>
 					</Link>
 				))}
 			</div>

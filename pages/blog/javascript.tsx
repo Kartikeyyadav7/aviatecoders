@@ -45,15 +45,20 @@ const Javascript: React.FC<JavascriptProps> = ({ posts }) => {
 			</div>
 			<div className="flex flex-wrap ml-5 ">
 				{Javascript.map((post) => (
-					<Link as={`/blog/${post.filePath.replace(/\.mdx?$/, "")}`} href="/">
-						<div key={post.filePath}>
-							<BlogCard
-								title={post.data.title}
-								publishedOn={post.data.publishedOn}
-								coverImage={post.data.coverImage}
-								timeForReading={post.timeForReading}
-							/>
-						</div>
+					<Link
+						as={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
+						href={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
+					>
+						<a>
+							<div key={post.filePath}>
+								<BlogCard
+									title={post.data.title}
+									publishedOn={post.data.publishedOn}
+									coverImage={post.data.coverImage}
+									timeForReading={post.timeForReading}
+								/>
+							</div>
+						</a>
 					</Link>
 				))}
 			</div>
