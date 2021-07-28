@@ -6,7 +6,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 import Layout from "../../components/Layout";
-import BlogLayout from "../../layout/BlogLayout";
+import BlogLayout from "../../components/BlogLayout";
 import { postFilePaths, postPath, getHeadings } from "../../lib/mdx";
 
 interface ReactNativePageProps {
@@ -45,7 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		const postFilePath = path.join(postPath, `${params.slug}.mdx`);
 		const source = fs.readFileSync(postFilePath, "utf8");
 		const headings = getHeadings(source);
-		console.log(headings);
+		// console.log(headings);
 		const result = matter(source);
 		data = result.data;
 		content = result.content;

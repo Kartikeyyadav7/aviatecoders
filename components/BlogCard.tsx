@@ -1,5 +1,4 @@
 import Image from "next/image";
-import blogImg from "../public/blogImg.jpg";
 
 interface BlogCardProps {
 	title: string;

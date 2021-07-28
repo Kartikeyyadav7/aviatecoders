@@ -6,8 +6,10 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 import Layout from "../../components/Layout";
-import BlogLayout from "../../layout/BlogLayout";
+import BlogLayout from "../../components/BlogLayout";
 import { postFilePaths, postPath, getHeadings } from "../../lib/mdx";
+// import dynamic from "next/dynamic";
+// import CustomLink from "../../components/CustomLink";
 
 interface JavascriptPageProps {
 	frontMatter: {
@@ -20,10 +22,19 @@ interface JavascriptPageProps {
 	source: MDXRemoteSerializeResult;
 }
 
+// const components = {
+// 	a: CustomLink,
+// It also works with dynamically-imported components, which is especially
+// useful for conditionally loading components for certain routes.
+// 	TestComponent: dynamic(() => import("../../components/TestComponent")),
+// 	Head,
+// };
+
 const JavascriptPage: React.FC<JavascriptPageProps> = ({
 	source,
 	frontMatter,
 }) => {
+	// console.log(source);
 	return (
 		<Layout>
 			<Head>
@@ -39,43 +50,25 @@ const JavascriptPage: React.FC<JavascriptPageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	let mdxSource, data, content;
+	const postFilePath = path.join(postPath, `${params?.slug}.mdx`);
+	// console.log(params);
+	const source = fs.readFileSync(postFilePath);
 
-	if (params) {
-		const postFilePath = path.join(postPath, `${params.slug}.mdx`);
-		const source = fs.readFileSync(postFilePath, "utf8");
-		// console.log(source);
-		const result = matter(source);
-		data = result.data;
-		content = result.content;
-		console.log(typeof content);
-		console.log(typeof JSON.stringify(content));
-		const headings = getHeadings(JSON.stringify(content));
-		console.log(headings);
-		// console.log(JSON.stringify(content));
+	const { content, data } = matter(source);
 
-		mdxSource = await serialize(content, {
-			// mdxOptions: {
-			// 	remarkPlugins: [],
-			// 	rehypePlugins: [
-			// 		require('rehype-slug'),
-			// require('rehype-autolink-headings'),
-			// require('rehype-toc'),
-			// ],
-			//   },
-			scope: data,
-		});
-	}
-
-	const source = mdxSource;
-
-	const frontMatter = data;
-	// console.log(frontMatter);
+	const mdxSource = await serialize(content, {
+		// Optionally pass remark/rehype plugins
+		mdxOptions: {
+			remarkPlugins: [],
+			rehypePlugins: [],
+		},
+		scope: data,
+	});
 
 	return {
 		props: {
-			source,
-			frontMatter,
+			source: mdxSource,
+			frontMatter: data,
 		},
 	};
 };
@@ -86,8 +79,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		.map((path) => path.replace(/\.mdx?$/, ""))
 		// Map the path into the static paths object required by Next.js
 		.map((slug) => ({ params: { slug } }));
-
-	// console.log(paths);
 
 	return {
 		paths,

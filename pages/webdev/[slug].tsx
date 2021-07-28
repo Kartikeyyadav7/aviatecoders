@@ -6,7 +6,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 import Layout from "../../components/Layout";
-import BlogLayout from "../../layout/BlogLayout";
+import BlogLayout from "../../components/BlogLayout";
 import { postFilePaths, postPath, getHeadings } from "../../lib/mdx";
 
 interface WebdevProps {
