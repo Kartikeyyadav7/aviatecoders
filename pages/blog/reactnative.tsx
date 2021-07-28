@@ -3,11 +3,7 @@ import Head from "next/head";
 import Layout from "../../components/Layout";
 import BlogCard from "../../components/BlogCard";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
-const readingTime = require("reading-time");
-import { postPath, postFilePaths } from "../../lib/mdx";
+import { getPosts } from "../../lib/mdx";
 
 interface ReactNativeProps {
 	posts: {
@@ -67,18 +63,8 @@ const ReactNative: React.FC<ReactNativeProps> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-	const posts = postFilePaths.map((filePath) => {
-		const source = fs.readFileSync(path.join(postPath, filePath));
-		const { content, data } = matter(source);
-		const stats = readingTime(content);
-		const timeForReading = stats.text;
-		return {
-			content,
-			data,
-			filePath,
-			timeForReading,
-		};
-	});
+	const posts = getPosts();
+
 	return {
 		props: {
 			posts,

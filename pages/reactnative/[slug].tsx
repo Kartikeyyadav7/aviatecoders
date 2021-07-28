@@ -7,7 +7,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import path from "path";
 import Layout from "../../components/Layout";
 import BlogLayout from "../../components/BlogLayout";
-import { postFilePaths, postPath, getHeadings } from "../../lib/mdx";
+import { postPath, getHeadings, paths } from "../../lib/mdx";
 
 interface ReactNativePageProps {
 	frontMatter: {
@@ -39,44 +39,33 @@ const ReactNativePage: React.FC<ReactNativePageProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-	let mdxSource, data, content;
+	const postFilePath = path.join(postPath, `${params?.slug}.mdx`);
+	// console.log(params);
+	const source = fs.readFileSync(postFilePath, "utf8");
 
-	if (params) {
-		const postFilePath = path.join(postPath, `${params.slug}.mdx`);
-		const source = fs.readFileSync(postFilePath, "utf8");
-		const headings = getHeadings(source);
-		// console.log(headings);
-		const result = matter(source);
-		data = result.data;
-		content = result.content;
+	const headings = getHeadings(source);
+	console.log(headings);
 
-		mdxSource = await serialize(content, {
-			scope: data,
-		});
-	}
+	const { content, data } = matter(source);
 
-	const source = mdxSource;
-	// console.log(source);
-	const frontMatter = data;
-	// console.log(frontMatter);
+	const mdxSource = await serialize(content, {
+		// Optionally pass remark/rehype plugins
+		mdxOptions: {
+			remarkPlugins: [],
+			rehypePlugins: [],
+		},
+		scope: data,
+	});
 
 	return {
 		props: {
-			source,
-			frontMatter,
+			source: mdxSource,
+			frontMatter: data,
 		},
 	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = postFilePaths
-		// Remove file extensions for page paths
-		.map((path) => path.replace(/\.mdx?$/, ""))
-		// Map the path into the static paths object required by Next.js
-		.map((slug) => ({ params: { slug } }));
-
-	// console.log(paths);
-
 	return {
 		paths,
 		fallback: false,
