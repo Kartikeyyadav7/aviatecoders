@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { Sun, Volume2 } from "react-feather";
 import Logo from "./Logo";
+import DarkMode from "./DarkMode";
+import Drop from "./Drop";
+import Volume from "./volume";
 
 const Header: React.FC = () => {
 	return (
@@ -19,13 +22,14 @@ const Header: React.FC = () => {
 					</Link>
 				</div>
 				<div className="mr-16">
-					<Link href="/blog">
-						<a> Blog</a>
-					</Link>
+				    
+					
+						<Drop/>
+					
 				</div>
 				<div className="mr-16">
 					<Link href="/">
-						<a>Feed</a>
+				 	Feed 
 					</Link>
 				</div>
 				<div className="mr-14">
@@ -36,10 +40,10 @@ const Header: React.FC = () => {
 			</div>
 			<div className="justify-self-end flex items-center justify-center ">
 				<div className="mr-10">
-					<Sun />
+					<DarkMode/>
 				</div>
 				<div className="">
-					<Volume2 />
+					<Volume />
 				</div>
 			</div>
 		</header>
