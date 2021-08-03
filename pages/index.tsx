@@ -7,6 +7,7 @@ import landingPage from "../public/landingPage.png";
 import BlogCard from "../components/BlogCard";
 import InstaCard from "../components/InstaCard";
 import { getPosts } from "../lib/mdx";
+import { Instagram, Twitter } from "react-feather";
 
 interface HomeProps {
 	posts: {
@@ -57,9 +58,25 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 			<div className="grid grid-cols-2 gap-8 items-center justify-center">
 				<div className="mr-20 font-semibold text-5xl">
 					<h1>Aviating Your Efficiency To Code</h1>
-					<button className="bg-[#1E2E46] mt-10 hover:bg-[#EFF0F2] hover:text-[#1E2E46] text-white font-bold py-2 px-4 rounded text-lg">
-						Subscribe
-					</button>
+					<div className="flex items-center mt-10">
+						<button className="bg-[#1E2E46] hover:bg-[#EFF0F2] hover:text-[#1E2E46] text-white font-bold py-2 px-4 rounded text-lg">
+							Subscribe
+						</button>
+						<div className="ml-5">
+							<Link href="https://instagram.com/aviatecoders">
+								<a>
+									<Instagram />
+								</a>
+							</Link>
+						</div>
+						<div className="ml-5">
+							<Link href="https://twitter.com/aviatecoders">
+								<a>
+									<Twitter />
+								</a>
+							</Link>
+						</div>
+					</div>
 				</div>
 				<div className="justify-self-center">
 					<Image
