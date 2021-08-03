@@ -1,16 +1,24 @@
 module.exports = {
 	mode: "jit",
 	purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-	darkMode: false, // or 'media' or 'class'
+	darkMode: "class", // or 'media' or 'class'
 	theme: {
+		typography: (theme) => ({}),
 		extend: {
 			fontFamily: {
 				sans: ["Inter"],
 			},
+			typography: (theme) => ({
+				dark: {
+					css: {
+						color: "white",
+					},
+				},
+			}),
 		},
 	},
 	variants: {
-		extend: {},
+		typography: ["dark"],
 	},
 	plugins: [require("@tailwindcss/typography")],
 };

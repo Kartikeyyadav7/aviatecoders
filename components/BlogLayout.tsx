@@ -11,7 +11,7 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
 			<div className="text-center m-8 mt-32 mb-32 font-semibold text-3xl">
 				{frontMatter.title}
 			</div>
-			<main className="max-w-prose m-auto prose prose-green leading-8 font-medium ">
+			<main className="max-w-prose m-auto dark:prose-dark prose  leading-8 font-medium ">
 				{children}
 			</main>
 		</>

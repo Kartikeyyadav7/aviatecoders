@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 	const postList = data;
 
-	console.log(postList);
+	// console.log(postList);
 	return {
 		props: {
 			postList,

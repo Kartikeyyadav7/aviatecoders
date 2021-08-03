@@ -44,7 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const source = fs.readFileSync(postFilePath, "utf8");
 
 	const headings = getHeadings(source);
-	console.log(headings);
+	// console.log(headings);
 
 	const { content, data } = matter(source);
 

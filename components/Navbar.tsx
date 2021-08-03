@@ -1,17 +1,20 @@
 import Link from "next/link";
-import { Sun, Volume2 } from "react-feather";
+import { useState, useEffect } from "react";
+import { Sun, Moon, Volume2 } from "react-feather";
 import Logo from "./Logo";
+import DarkLogo from "./DarkLogo";
+import { useTheme } from "next-themes";
 
 const Header: React.FC = () => {
+	const { theme, setTheme } = useTheme();
+
 	return (
 		<header className="max-w-screen-xl m-8 container mx-auto px-5 grid grid-cols-2 font-sans font-medium">
 			<div className="flex items-center justify-center justify-self-start">
 				<div className="mr-16 font-sans font-semibold flex items-center">
 					<div className="mr-2">
 						<Link href="/">
-							<a>
-								<Logo />
-							</a>
+							<a>{theme === "dark" ? <DarkLogo /> : <Logo />}</a>
 						</Link>
 					</div>
 					<Link href="/">
@@ -35,10 +38,19 @@ const Header: React.FC = () => {
 				</div>
 			</div>
 			<div className="justify-self-end flex items-center justify-center ">
-				<div className="mr-10">
-					<Sun />
-				</div>
-				<div className="">
+				{theme === "dark" ? (
+					<Moon
+						className="mr-10 cursor-pointer"
+						onClick={() => setTheme("light")}
+					/>
+				) : (
+					<Sun
+						className="mr-10 cursor-pointer"
+						onClick={() => setTheme("dark")}
+					/>
+				)}
+
+				<div className="cursor-pointer">
 					<Volume2 />
 				</div>
 			</div>

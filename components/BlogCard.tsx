@@ -16,7 +16,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
 	const date: Date = new Date(publishedOn);
 	return (
 		<div className="p-2  h-full">
-			<div className="h-full max-w-sm rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition duration-300 ease-in-out border-2 border-solid border-opacity-5 border-black">
+			<div className="h-full max-w-sm rounded-2xl dark:bg-[#1E2837] overflow-hidden shadow-md hover:shadow-2xl transition duration-300 ease-in-out border-2 border-solid border-opacity-5 border-black">
 				<div className="px-6 py-4">
 					<div className="rounded-lg">
 						<Image width={500} height={300} src={coverImage} alt={title} />

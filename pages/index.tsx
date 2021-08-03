@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Layout from "../components/Layout";
 import Image from "next/image";
-import landingPage from "../public/landingPage.png";
+import landingPage from "../public/landing-page-svg.png";
 import BlogCard from "../components/BlogCard";
 import InstaCard from "../components/InstaCard";
 import { getPosts } from "../lib/mdx";
@@ -87,7 +87,7 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 					/>
 				</div>
 			</div>
-			<div className="mr-20 font-semibold text-3xl mb-4  ">
+			<div className="ml-0.5 font-semibold text-3xl mb-4  ">
 				<h1>Our Latest Blogs</h1>
 			</div>
 			<div className="flex flex-wrap  ">
@@ -115,7 +115,7 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 					</Link>
 				))}
 			</div>
-			<div className="mr-20 font-semibold text-3xl mb-4 mt-5 ">
+			<div className="ml-0.5font-semibold text-3xl mb-4 mt-5 ">
 				<h1>Instagram Feed</h1>
 			</div>
 			<div className="flex flex-wrap  ">
