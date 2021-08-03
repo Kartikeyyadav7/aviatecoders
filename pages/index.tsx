@@ -5,8 +5,8 @@ import Layout from "../components/Layout";
 import Image from "next/image";
 import landingPage from "../public/landingPage.png";
 import BlogCard from "../components/BlogCard";
+import InstaCard from "../components/InstaCard";
 import { getPosts } from "../lib/mdx";
-import React from "react";
 
 interface HomeProps {
 	posts: {
@@ -24,9 +24,16 @@ interface HomeProps {
 		filePath: string;
 		timeForReading: string;
 	}[];
+	postList: {
+		data: {
+			id: string;
+			permalink: string;
+			media_url: string;
+		}[];
+	};
 }
 
-const Home: React.FC<HomeProps> = ({ posts }) => {
+const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 	const publishedPosts = posts.filter((post) => post.data.isPublished === true);
 	const datePublish = publishedPosts.map((date) => date.data.publishedOn);
 	const sortedPosts = publishedPosts
@@ -91,15 +98,42 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 					</Link>
 				))}
 			</div>
+			<div className="mr-20 font-semibold text-3xl mb-4 mt-5 ">
+				<h1>Instagram Feed</h1>
+			</div>
+			<div className="flex flex-wrap  ">
+				{postList.data.slice(0, 6).map((post) => (
+					<Link as={`${post.permalink}`} href={`${post.permalink}`}>
+						<a>
+							<div key={post.id} className="h-full">
+								<InstaCard
+									id={post.id}
+									permalink={post.permalink}
+									media_url={post.media_url}
+								/>
+							</div>
+						</a>
+					</Link>
+				))}
+			</div>
 		</Layout>
 	);
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
 	const posts = getPosts();
+	const res = await fetch(
+		`https://graph.instagram.com/me/media?fields=id,permalink,media_url&access_token=${process.env.INSTAGRAM_ACCESS_KEY}`
+	);
+
+	const data = await res.json();
+
+	const postList = data;
+
 	return {
 		props: {
 			posts,
+			postList,
 		},
 	};
 };

@@ -24,7 +24,7 @@ const Header: React.FC = () => {
 					</Link>
 				</div>
 				<div className="mr-16">
-					<Link href="/">
+					<Link href="/feed">
 						<a>Feed</a>
 					</Link>
 				</div>
