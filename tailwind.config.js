@@ -3,7 +3,6 @@ module.exports = {
 	purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
 	darkMode: "class", // or 'media' or 'class'
 	theme: {
-		typography: (theme) => ({}),
 		extend: {
 			fontFamily: {
 				sans: ["Inter"],
@@ -18,7 +17,7 @@ module.exports = {
 		},
 	},
 	variants: {
-		typography: ["dark"],
+		// typography: ["dark"],
 	},
 	plugins: [require("@tailwindcss/typography")],
 };
