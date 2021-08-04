@@ -1,6 +1,6 @@
 module.exports = {
 	images: {
-		domains: ["video.cdninstagram.com", "scontent.cdninstagram.com"],
+		domains: ["scontent.cdninstagram.com", "scontent-del1-1.cdninstagram.com"],
 	},
 	reactStrictMode: true,
 };

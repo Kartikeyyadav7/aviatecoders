@@ -55,10 +55,10 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className="grid grid-cols-2 gap-8 items-center justify-center">
-				<div className="mr-20 font-semibold text-5xl">
+			<div className="grid md:grid-cols-2 lg:gap-8 md:items-center md:justify-center md:gap-1   grid-cols-1">
+				<div className="lg:mr-20 lg:font-semibold lg:text-5xl md:text-3xl md:font-medium  text-2xl font-medium ">
 					<h1>Aviating Your Efficiency To Code</h1>
-					<div className="flex items-center mt-10">
+					<div className="flex items-center lg:mt-10 mt-5 ">
 						<button className="bg-[#1E2E46] hover:bg-[#EFF0F2] hover:text-[#1E2E46] text-white font-bold py-2 px-4 rounded text-lg">
 							Subscribe
 						</button>
@@ -78,7 +78,7 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 						</div>
 					</div>
 				</div>
-				<div className="justify-self-center">
+				<div className="lg:justify-self-center order-first w-full md:order-last">
 					<Image
 						src={landingPage}
 						alt="landing page"
@@ -87,10 +87,10 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 					/>
 				</div>
 			</div>
-			<div className="ml-0.5 font-semibold text-3xl mb-4  ">
+			<div className="ml-0.5 lg:font-semibold lg:text-3xl md:font-medium md:text-2xl mb-4 text-xl font-medium  mt-5 ">
 				<h1>Our Latest Blogs</h1>
 			</div>
-			<div className="flex flex-wrap  ">
+			<div className="flex flex-wrap h-full justify-between">
 				{getTopLatestPosts.map((post) => (
 					<Link
 						as={`/${post.data.category}/${post.filePath.replace(
@@ -103,7 +103,7 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 						)}`}
 					>
 						<a>
-							<div key={post.filePath} className="h-full">
+							<div key={post.filePath} className=" ">
 								<BlogCard
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}
@@ -115,19 +115,15 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 					</Link>
 				))}
 			</div>
-			<div className="ml-0.5font-semibold text-3xl mb-4 mt-5 ">
+			<div className="ml-0.5 lg:font-semibold lg:text-3xl md:font-medium md:text-2xl text-xl font-medium mb-4 mt-5 ">
 				<h1>Instagram Feed</h1>
 			</div>
-			<div className="flex flex-wrap  ">
+			<div className="flex flex-wrap h-full justify-between  ">
 				{postList.data.slice(0, 6).map((post) => (
 					<Link as={`${post.permalink}`} href={`${post.permalink}`}>
 						<a>
-							<div key={post.id} className="h-full">
-								<InstaCard
-									id={post.id}
-									permalink={post.permalink}
-									media_url={post.media_url}
-								/>
+							<div key={post.id} className="">
+								<InstaCard media_url={post.media_url} />
 							</div>
 						</a>
 					</Link>
