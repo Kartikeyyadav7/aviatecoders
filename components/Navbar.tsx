@@ -4,6 +4,9 @@ import { Sun, Moon, Volume2, Menu } from "react-feather";
 import Logo from "./Logo";
 import DarkLogo from "./DarkLogo";
 import { useTheme } from "next-themes";
+import DarkMode from "./DarkMode";
+import Volume from "./Volume";
+import Drop from "./Drop";
 
 const Navbar: React.FC = () => {
 	const { theme, setTheme } = useTheme();
@@ -31,9 +34,12 @@ const Navbar: React.FC = () => {
 							</div>
 							{/* primary nav */}
 							<div className="hidden md:flex items-center space-x-1">
-								<Link href="/blog">
-									<a className="py-5 px-3 ">Blog</a>
-								</Link>
+								<div className="md:flex items-center">
+									<Link href="/blog">
+										<a className="py-5 pl-3 ">Blog</a>
+									</Link>
+									<Drop />
+								</div>
 								<Link href="/feed">
 									<a className="py-5 px-3 ">Feed</a>
 								</Link>
@@ -44,18 +50,10 @@ const Navbar: React.FC = () => {
 						</div>
 						{/* secondary nav */}
 						<div className="hidden md:flex items-center space-x-1">
-							{theme === "dark" ? (
-								<div className="py-5 px-3 cursor-pointer">
-									<Moon onClick={() => setTheme("light")} />
-								</div>
-							) : (
-								<div className="py-2 px-3 cursor-pointer">
-									<Sun onClick={() => setTheme("dark")} />
-								</div>
-							)}
+							<DarkMode />
 
 							<div className="py-2 px-3 cursor-pointer">
-								<Volume2 />
+								<Volume />
 							</div>
 						</div>
 						{/* mobile button goes here */}
@@ -104,18 +102,10 @@ const Navbar: React.FC = () => {
 							</Link>
 
 							<div className=" flex items-center space-x-1">
-								{theme === "dark" ? (
-									<div className="py-5 px-3 cursor-pointer">
-										<Moon onClick={() => setTheme("light")} />
-									</div>
-								) : (
-									<div className="py-2 px-3 cursor-pointer">
-										<Sun onClick={() => setTheme("dark")} />
-									</div>
-								)}
+								<DarkMode />
 
 								<div className="py-2 px-3 cursor-pointer">
-									<Volume2 />
+									<Volume />
 								</div>
 							</div>
 						</nav>

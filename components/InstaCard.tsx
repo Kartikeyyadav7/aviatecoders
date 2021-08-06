@@ -7,7 +7,7 @@ interface InstaCardProps {
 const InstaCard: React.FC<InstaCardProps> = ({ media_url }) => {
 	return (
 		<>
-			<div className="sm:w-80 m-2 lg:w-72 h-full xl:w-96">
+			<div className="sm:w-80 m-2 lg:w-72 h-full xl:w-96 hover:shadow-2xl transition duration-300 ease-in-out">
 				<article className="overflow-hidden rounded-lg shadow-lg">
 					<div className=" block h-auto w-full">
 						<Image
