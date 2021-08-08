@@ -7,7 +7,7 @@ import landingPage from "../public/landingPage.png";
 import BlogCard from "../components/BlogCard";
 import { getPosts } from "../lib/mdx";
 import React from "react";
-
+import Subscribe from "../components/Subscribe"
 
 interface HomeProps {
 	posts: {
@@ -92,7 +92,9 @@ const Home: React.FC<HomeProps> = ({ posts }) => {
 						</a>
 					</Link>
 				))}
+
 			</div>
+			<Subscribe/>
 		</Layout>
 	);
 };
