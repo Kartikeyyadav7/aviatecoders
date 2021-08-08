@@ -1,10 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import { useSpring, animated } from "react-spring";
+import { connect } from "react-redux";
+import { checkSound } from "../redux/actions/soundAction";
 import useSound from "use-sound";
 const Volumes = require("../public/audio/pop.mp3");
 
-export default function Volume() {
-	const [playbackRate, setPlaybackRate] = React.useState(0.95);
+interface VolumeProps {
+	checkSound: any;
+	sound: any;
+}
+
+const Volume: React.FC<VolumeProps> = ({ checkSound, sound }) => {
+	const [playbackRate, setPlaybackRate] = useState(0.95);
 
 	const [play] = useSound(Volumes, {
 		playbackRate,
@@ -33,20 +40,13 @@ export default function Volume() {
 		},
 	};
 
-	const [isVolume, setVolume] = React.useState(true);
-
-	const toggleVolume = () => {
-		setVolume((previous) => !previous);
-		//  setTheme(theme === 'dark' ? 'light' : 'dark');
-	};
-
-	const { transform } = properties[isVolume ? "Sun" : "Moon"];
+	const { transform } = properties[sound.isSound ? "Sun" : "Moon"];
 
 	const svgContainerProps = useSpring({ transform });
 
 	return (
 		<div>
-			{isVolume ? (
+			{sound.isSound ? (
 				<animated.svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -58,8 +58,8 @@ export default function Volume() {
 					strokeLinecap="round"
 					strokeLinejoin="round"
 					className="feather feather-volume-2"
-					onClick={function (event) {
-						toggleVolume();
+					onClick={(event) => {
+						checkSound();
 						handleClick();
 					}}
 					style={{
@@ -84,7 +84,7 @@ export default function Volume() {
 					strokeLinejoin="round"
 					className="feather feather-volume-2"
 					onClick={function (event) {
-						toggleVolume();
+						checkSound();
 						handleClick();
 					}}
 					style={{
@@ -97,4 +97,10 @@ export default function Volume() {
 			)}
 		</div>
 	);
-}
+};
+
+const mapStateToProps = (state: any) => ({
+	sound: state.sound,
+});
+
+export default connect(mapStateToProps, { checkSound })(Volume);

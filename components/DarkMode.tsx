@@ -3,8 +3,15 @@ import { useSpring, animated } from "react-spring";
 import { useTheme } from "next-themes";
 import useSound from "use-sound";
 const Clicked = require("../public/audio/clicked.mp3");
+import { connect } from "react-redux";
 
-export default function DarkMode() {
+interface DarkModeProps {
+	sound: {
+		isSound: boolean;
+	};
+}
+
+const DarkMode: React.FC<DarkModeProps> = ({ sound }) => {
 	const { theme, setTheme } = useTheme();
 	const [toggle, setToggle] = useState(false);
 	const handleToggleTheme = () => {
@@ -26,8 +33,10 @@ export default function DarkMode() {
 	});
 
 	const handleSound = () => {
-		setPlaybackRate(playbackRate + 0.1);
-		play();
+		if (sound.isSound === true) {
+			setPlaybackRate(playbackRate + 0.1);
+			play();
+		}
 	};
 
 	const properties = {
@@ -106,4 +115,10 @@ export default function DarkMode() {
 			)
 		</animated.svg>
 	);
-}
+};
+
+const mapStateToProps = (state: any) => ({
+	sound: state.sound,
+});
+
+export default connect(mapStateToProps)(DarkMode);
