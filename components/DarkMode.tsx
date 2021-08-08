@@ -110,9 +110,6 @@ const linesProps = useSpring({ opacity });
     
 };
 
-     
-
-      
     </animated.svg>
    
   

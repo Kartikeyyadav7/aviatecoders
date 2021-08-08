@@ -1,7 +1,7 @@
 // import Footer from '../components/footer'
 import Meta from "./Meta";
 import Navbar from "./Navbar";
-
+import Subscribe from "./Subscribe"
 interface Props {
 	// any other props that come into the component, you don't have to explicitly define children.
 }
@@ -12,7 +12,9 @@ const Layout: React.FC<Props> = ({ children }) => {
 			<Meta />
 			<Navbar />
 			<div className="max-w-screen-xl m-8  mx-auto px-5">
-				<main>{children}</main>
+				<main>{children}
+				<Subscribe/>
+				</main>
 			</div>
 			{/* <Footer /> */}
 		</>
