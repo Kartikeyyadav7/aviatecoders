@@ -10,7 +10,7 @@ export default function ContactUs() {
         <div>
     
 <form className=" min-h-screen flex items-center justify-center  py-12 px-4 sm:px-3 lg:px-4">
-    <div className="w-full max-w-2xl px-5 py-10 m-auto mt-10 bg-white rounded-lg shadow dark:bg-gray-800">
+    <div className="w-full max-w-2xl px-5 py-10 m-auto mt-10 bg-white rounded-lg shadow-xl">
         <div className="mb-6 text-3xl font-light text-center text-gray-800 dark:text-white">
             Contact us !
         </div>
@@ -25,10 +25,11 @@ export default function ContactUs() {
                         <input type="text" id="contact-form-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#1E2E46] focus:border-transparent" placeholder="Last Name"/>
                         </div>
                     </div>
-                    <div className=" relative ">
+                   <div >
+                    <div className=" w-full ">
                         <input type="text" id="contact-form-email" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#1E2E46] focus:border-transparent" placeholder="Email"/>
                         </div>
-                   
+                   </div>
                     <div className="col-span-2">
                         <label className="text-gray-700" for="name">
                             <textarea className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#1E2E46] focus:border-transparent" id="comment" placeholder="Enter your comment" name="comment" rows="5" cols="40">

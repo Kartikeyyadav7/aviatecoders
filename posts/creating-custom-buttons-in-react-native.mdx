@@ -16,8 +16,9 @@ React Native is an open-source mobile application framework created by Facebook,
 
 But.. this core UI element Looks different in a different platform as in android and iOS same goes with the Button component look different on each platform, and there are limited styling and customization options to these components. For this and many other reasons, it’s critical to know how to create buttons that look consistent regardless of the operating system.
 
-<!-- ![Buttons in different OS](/assets/frame-13-1-.png) -->
+<!-- ![Buttons in different OS](/blog/creating-custom-buttons-in-react-native/react-native-1.png) -->
 
+![Buttons in different OS](/blog/creating-custom-buttons-in-react-native/react-native-1.png)
 For a user interface to look seamless and the same on every platform it becomes very important to create our custom components. In this blog, we will be dealing with several methods to create our custom button.
 
 <!--EndFragment-->
@@ -164,7 +165,7 @@ It should look some what like this
 <!--EndFragment-->
 
 <!-- ![Demonstration on emulator](/assets/3.png) -->
-
+![Demonstration on emulator](/blog/creating-custom-buttons-in-react-native/react-native-2.png)
 <!--StartFragment-->
 
 Wondering how to give gradient or another styling to our buttons! Here react-native has a solution to it. React-native provides a library that gives us the option to apply linear gradient as there is no by default API to include linear gradient in our button so we need to import the library for it of linear-gradient, do the following for importing the same
@@ -201,7 +202,7 @@ const CustomButton = ({ onPress, title }) => (
 It should now look somewhat like this-
 
 <!-- ![With gradient](/assets/2.png) -->
-
+![With gradient](/blog/creating-custom-buttons-in-react-native/react-native-3.png)
 Full Source code of the tutorial is here given below,
 
 ```jsx
