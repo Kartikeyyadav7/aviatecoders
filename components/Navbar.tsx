@@ -33,7 +33,7 @@ const Header: React.FC = () => {
 					</Link>
 				</div>
 				<div className="mr-14">
-					<Link href="/">
+					<Link href="/ContactUs">
 						<a>Contact</a>
 					</Link>
 				</div>

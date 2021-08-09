@@ -27,6 +27,11 @@ export default function Subscribe() {
 								<input type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-lg text-lg sm:text-sm border-gray-300 rounded-md h-12 p-2"></input>
 							</div>
 
+                            <div className="col-span-12">
+								<label for="first_name" className="block text-sm font-medium text-gray-700">Last name</label>
+								<input type="text" name="first_name" id="first_name" autocomplete="given-name" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-lg text-lg sm:text-sm border-gray-300 rounded-md h-12 p-2"></input>
+							</div>
+
 							<div className="col-span-12">
 								<label for="email_address" className="block text-sm font-medium text-gray-700">Email address</label>
 								<input type="text" name="email_address" id="email_address" autocomplete="email" className="mt-2 ring-gray-500 focus:ring-indigo-200 focus:border-indigo-200 block w-full text-lg shadow-lg sm:text-sm border-gray-300 h-12 p-2 rounded-md"></input>
