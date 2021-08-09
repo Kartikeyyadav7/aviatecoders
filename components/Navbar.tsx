@@ -6,7 +6,7 @@ import DarkLogo from "./DarkLogo";
 import { useTheme } from "next-themes";
 import DarkMode from "./DarkMode";
 import Volume from "./Volume";
-import Drop from "./Drop";
+import DropDown from "./DropDown";
 
 const Navbar: React.FC = () => {
 	const { theme, setTheme } = useTheme();
@@ -33,19 +33,22 @@ const Navbar: React.FC = () => {
 								</Link>
 							</div>
 							{/* primary nav */}
-							<div className="hidden md:flex items-center space-x-1">
-								<div className="md:flex items-center">
+							<div className="hidden md:flex items-center space-x-1  ">
+								<div className="md:flex items-center hover:underline">
 									<Link href="/blog">
-										<a className="py-5 pl-3 ">Blog</a>
+										<DropDown />
 									</Link>
-									<Drop />
 								</div>
-								<Link href="/feed">
-									<a className="py-5 px-3 ">Feed</a>
-								</Link>
-								<Link href="/">
-									<a className="py-5 px-3 ">Contact</a>
-								</Link>
+								<div className="hover:underline">
+									<Link href="/feed">
+										<a className="py-5 px-3 ">Feed</a>
+									</Link>
+								</div>
+								<div className="hover:underline">
+									<Link href="/">
+										<a className="py-5 px-3 ">Contact</a>
+									</Link>
+								</div>
 							</div>
 						</div>
 						{/* secondary nav */}

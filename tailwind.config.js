@@ -17,7 +17,9 @@ module.exports = {
 		},
 	},
 	variants: {
-		// typography: ["dark"],
+		extend: {
+			display: ["group-hover"],
+		},
 	},
 	plugins: [require("@tailwindcss/typography")],
 };
