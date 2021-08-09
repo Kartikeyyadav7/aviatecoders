@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Sun, Moon, Volume2, Menu } from "react-feather";
+import { Menu } from "react-feather";
 import Logo from "./Logo";
 import DarkLogo from "./DarkLogo";
 import { useTheme } from "next-themes";
@@ -45,7 +45,7 @@ const Navbar: React.FC = () => {
 									</Link>
 								</div>
 								<div className="hover:underline">
-									<Link href="/">
+									<Link href="/contact">
 										<a className="py-5 px-3 ">Contact</a>
 									</Link>
 								</div>

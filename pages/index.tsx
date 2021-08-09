@@ -1,3 +1,4 @@
+import React from "react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import Image from "next/image";
 import landingPage from "../public/landing-page-svg.png";
 import BlogCard from "../components/BlogCard";
 import InstaCard from "../components/InstaCard";
+import Modal from "../components/Modal";
 import { getPosts } from "../lib/mdx";
 import { Instagram, Twitter } from "react-feather";
 
@@ -36,7 +38,7 @@ interface HomeProps {
 
 const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 	const publishedPosts = posts.filter((post) => post.data.isPublished === true);
-	const datePublish = publishedPosts.map((date) => date.data.publishedOn);
+	// const datePublish = publishedPosts.map((date) => date.data.publishedOn);
 	const sortedPosts = publishedPosts
 		.slice()
 		.sort(
@@ -59,9 +61,7 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 				<div className="lg:mr-20 lg:font-semibold lg:text-5xl md:text-3xl md:font-medium  text-2xl font-medium ">
 					<h1>Aviating Your Efficiency To Code</h1>
 					<div className="flex items-center lg:mt-10 mt-5 ">
-						<button className="bg-[#1E2E46] hover:bg-[#EFF0F2] hover:text-[#1E2E46] text-white font-bold py-2 px-4 rounded text-lg">
-							Subscribe
-						</button>
+						<Modal />
 						<div className="ml-5">
 							<Link href="https://instagram.com/aviatecoders">
 								<a>
