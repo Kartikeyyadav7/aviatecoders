@@ -31,11 +31,7 @@ const Feed: React.FC<FeedProps> = ({ postList }) => {
 					<Link as={`${post.permalink}`} href={`${post.permalink}`}>
 						<a>
 							<div key={post.id} className="h-full">
-								<InstaCard
-									id={post.id}
-									permalink={post.permalink}
-									media_url={post.media_url}
-								/>
+								<InstaCard media_url={post.media_url} />
 							</div>
 						</a>
 					</Link>

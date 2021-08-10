@@ -4,8 +4,8 @@ import Link from "next/link";
 const Footer = () => {
 	return (
 		<div>
-			<footer className="bg-gray-50 text-gray-600 px-6 lg:px-8 py-12">
-				<div className="max-w-screen-xl mx-auto mb-4 lg:mb-12 h-6  ">
+			<footer className=" bg-gray-50 text-gray-600 px-6 lg:px-8 py-12">
+				<div className="max-w-screen-xl  mx-auto mb-4 lg:mb-12 h-6  ">
 					<Logo />
 				</div>
 				<div className="max-w-screen-xl mx-auto ">
