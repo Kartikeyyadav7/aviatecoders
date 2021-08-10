@@ -154,6 +154,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 	const data = await res.json();
 
+	// console.log(data);
+
 	const postList = data;
 
 	return {
