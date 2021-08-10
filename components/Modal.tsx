@@ -1,6 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import cover from "../public/modal.png";
 import { useAlert } from "react-alert";
 import { useForm, ValidationError } from "@formspree/react";
 
@@ -32,12 +30,7 @@ export default function Modal() {
 							{/*content*/}
 
 							<div className="  bg-[#ffffff]">
-								<Image
-									width={600}
-									height={250}
-									src={cover}
-									alt="modal image"
-								></Image>
+								<img src="/modal.png" alt="modal image" />
 							</div>
 							<div className="border-0  shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 								{/*header*/}
