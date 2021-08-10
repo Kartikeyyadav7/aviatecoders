@@ -100,6 +100,7 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 			<div className="flex flex-wrap h-full justify-between">
 				{getTopLatestPosts.map((post) => (
 					<Link
+						key={post.filePath}
 						as={`/${post.data.category}/${post.filePath.replace(
 							/\.mdx?$/,
 							""
@@ -112,6 +113,7 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 						<a>
 							<div key={post.filePath} className=" ">
 								<BlogCard
+									key={post.filePath}
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}
 									coverImage={post.data.coverImage}
@@ -127,7 +129,11 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 			</div>
 			<div className="flex flex-wrap h-full justify-between  ">
 				{postList.data.slice(0, 6).map((post) => (
-					<Link as={`${post.permalink}`} href={`${post.permalink}`}>
+					<Link
+						key={post.id}
+						as={`${post.permalink}`}
+						href={`${post.permalink}`}
+					>
 						<a>
 							<div key={post.id} className="">
 								<InstaCard media_url={post.media_url} />

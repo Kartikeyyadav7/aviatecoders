@@ -28,10 +28,14 @@ const Feed: React.FC<FeedProps> = ({ postList }) => {
 			</div>
 			<div className="flex flex-wrap  ">
 				{postList.data.slice(0, 9).map((post) => (
-					<Link as={`${post.permalink}`} href={`${post.permalink}`}>
+					<Link
+						as={`${post.permalink}`}
+						href={`${post.permalink}`}
+						key={post.id}
+					>
 						<a>
 							<div key={post.id} className="h-full">
-								<InstaCard media_url={post.media_url} />
+								<InstaCard key={post.id} media_url={post.media_url} />
 							</div>
 						</a>
 					</Link>

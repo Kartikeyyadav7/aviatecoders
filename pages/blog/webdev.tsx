@@ -40,12 +40,14 @@ const WebDev: React.FC<WebDevProps> = ({ posts }) => {
 			<div className="flex flex-wrap ml-5 ">
 				{WebDev.map((post) => (
 					<Link
+						key={post.filePath}
 						as={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
 						href={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
 					>
 						<a>
 							<div key={post.filePath} className="h-full">
 								<BlogCard
+									key={post.filePath}
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}
 									coverImage={post.data.coverImage}

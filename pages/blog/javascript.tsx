@@ -42,12 +42,14 @@ const Javascript: React.FC<JavascriptProps> = ({ posts }) => {
 			<div className="flex flex-wrap ml-5 ">
 				{Javascript.map((post) => (
 					<Link
+						key={post.filePath}
 						as={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
 						href={`/javascript/${post.filePath.replace(/\.mdx?$/, "")}`}
 					>
 						<a>
 							<div key={post.filePath} className="h-full">
 								<BlogCard
+									key={post.filePath}
 									title={post.data.title}
 									publishedOn={post.data.publishedOn}
 									coverImage={post.data.coverImage}

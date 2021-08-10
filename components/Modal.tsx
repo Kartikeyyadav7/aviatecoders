@@ -32,7 +32,12 @@ export default function Modal() {
 							{/*content*/}
 
 							<div className="  bg-[#ffffff]">
-								<Image width={600} height={250} src={cover}></Image>
+								<Image
+									width={600}
+									height={250}
+									src={cover}
+									alt="modal image"
+								></Image>
 							</div>
 							<div className="border-0  shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
 								{/*header*/}

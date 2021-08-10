@@ -12,11 +12,10 @@ import { connect } from "react-redux";
 const Clicked = require("../public/audio/clicked.mp3");
 
 interface NavbarProps {
-	checkSound: any;
 	sound: any;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ checkSound, sound }) => {
+const Navbar: React.FC<NavbarProps> = ({ sound }) => {
 	const { theme, setTheme } = useTheme();
 	const [toggle, setToggle] = useState(false);
 	const [cross, setCross] = useState(false);
@@ -64,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ checkSound, sound }) => {
 							{/* primary nav */}
 							<div className="hidden md:flex items-center space-x-1  ">
 								<div className="md:flex items-center hover:underline">
-									<Link href="/blog">
+									<Link href="/blog" passHref>
 										<DropDown />
 									</Link>
 								</div>

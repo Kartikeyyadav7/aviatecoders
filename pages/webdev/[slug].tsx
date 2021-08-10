@@ -13,6 +13,8 @@ interface WebdevProps {
 	frontMatter: {
 		title: string;
 		description: string;
+		author: string;
+		category: string;
 	};
 	params: {
 		slug: string;

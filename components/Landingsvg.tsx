@@ -544,9 +544,9 @@ function Landingsvg() {
 					d="M114.145 538.217C68.4563 548.821 24.3856 512.151 15.7094 456.313C7.03339 400.476 37.0373 346.615 82.7257 336.011C128.414 325.408 172.484 362.077 181.16 417.914C189.836 473.752 159.833 527.613 114.145 538.217Z"
 					stroke="url(#paint11_linear)"
 					strokeWidth="1.33333"
-					stroke-miterlimit="10"
+					strokeMiterlimit="10"
 				/>
-				<g clip-path="url(#clip0)">
+				<g clipPath="url(#clip0)">
 					<path
 						d="M565.795 564.775C565.795 564.955 461.313 565.108 332.444 565.108C203.574 565.108 99.0713 564.955 99.0713 564.775C99.0713 564.596 203.532 564.442 332.444 564.442C461.355 564.442 565.795 564.583 565.795 564.775Z"
 						fill="#263238"
@@ -1100,8 +1100,8 @@ function Landingsvg() {
 						y2="244.166"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint1_linear"
@@ -1111,8 +1111,8 @@ function Landingsvg() {
 						y2="255.864"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint2_linear"
@@ -1122,8 +1122,8 @@ function Landingsvg() {
 						y2="267.563"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint3_linear"
@@ -1133,8 +1133,8 @@ function Landingsvg() {
 						y2="292.937"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint4_linear"
@@ -1144,8 +1144,8 @@ function Landingsvg() {
 						y2="304.635"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint5_linear"
@@ -1155,8 +1155,8 @@ function Landingsvg() {
 						y2="288.947"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint6_linear"
@@ -1166,9 +1166,9 @@ function Landingsvg() {
 						y2="269.498"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEFEFE" />
-						<stop offset="1.1e-07" stop-color="#831E8B" />
-						<stop offset="1" stop-color="white" />
+						<stop stopColor="#FEFEFE" />
+						<stop offset="1.1e-07" stopColor="#831E8B" />
+						<stop offset="1" stopColor="white" />
 					</linearGradient>
 					<linearGradient
 						id="paint7_linear"
@@ -1178,8 +1178,8 @@ function Landingsvg() {
 						y2="123.775"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint8_linear"
@@ -1189,8 +1189,8 @@ function Landingsvg() {
 						y2="24.7053"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint9_linear"
@@ -1200,8 +1200,8 @@ function Landingsvg() {
 						y2="411.562"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#B22297" />
-						<stop offset="1" stop-color="#2E2F7B" />
+						<stop stopColor="#B22297" />
+						<stop offset="1" stopColor="#2E2F7B" />
 					</linearGradient>
 					<linearGradient
 						id="paint10_linear"
@@ -1211,8 +1211,8 @@ function Landingsvg() {
 						y2="434.959"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#FEED27" />
-						<stop offset="1" stop-color="#ED1077" />
+						<stop stopColor="#FEED27" />
+						<stop offset="1" stopColor="#ED1077" />
 					</linearGradient>
 					<linearGradient
 						id="paint11_linear"
@@ -1222,8 +1222,8 @@ function Landingsvg() {
 						y2="503.074"
 						gradientUnits="userSpaceOnUse"
 					>
-						<stop stop-color="#B22297" />
-						<stop offset="1" stop-color="#2E2F7B" />
+						<stop stopColor="#B22297" />
+						<stop offset="1" stopColor="#2E2F7B" />
 					</linearGradient>
 					<clipPath id="clip0">
 						<rect
