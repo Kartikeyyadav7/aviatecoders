@@ -14,7 +14,7 @@ export default function Modal() {
       </button>
       {showModal ? (
         <>
-          <div className="justify-center items-center rounded-2xl flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+          <div className="justify-center items-center rounded-xl flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto rounded-t-lg my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="h-44 w-full flex  bg-[#7579D5]">
@@ -25,15 +25,15 @@ export default function Modal() {
                 <div className="flex items-start justify-between p-3 border-b border-solid border-blueGray-200 rounded-t">
                   <div className="grid max-w-xl grid-cols-1">
                     <div>
-                      <h3 className="text-3xl  ml-48 font-semibold">
+                      <h3 className="text-3xl  ml-56 font-semibold">
                         Subscribe{" "}
                       </h3>
                     </div>
                     <div className="mt-2">
                       {" "}
-                      <p className="text-sm ml-12 text-gray-500 w-125 align-center">
+                      <p className="text-sm ml-12 text-gray-500 w-125 text-center">
                         Subscribe our newsletter and get up to dated with new
-                        technologies and our tutorial
+                        technologies and get notified for our tutorials
                       </p>
                     </div>
                   </div>
@@ -41,7 +41,7 @@ export default function Modal() {
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-black text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
