@@ -1,18 +1,47 @@
 import Link from "next/link";
 import { useState } from "react";
-import { Menu } from "react-feather";
+import { Menu, Sun, Moon, X } from "react-feather";
 import Logo from "./Logo";
 import DarkLogo from "./DarkLogo";
+import useSound from "use-sound";
 import { useTheme } from "next-themes";
 import DarkMode from "./DarkMode";
 import Volume from "./Volume";
 import DropDown from "./DropDown";
+import { connect } from "react-redux";
+const Clicked = require("../public/audio/clicked.mp3");
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+	checkSound: any;
+	sound: any;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ checkSound, sound }) => {
 	const { theme, setTheme } = useTheme();
 	const [toggle, setToggle] = useState(false);
+	const [cross, setCross] = useState(false);
 	const handleClick = () => {
 		setToggle(!toggle);
+		setCross(!cross);
+	};
+
+	const [playbackRate, setPlaybackRate] = useState(0.95);
+
+	const [play] = useSound(Clicked, {
+		playbackRate,
+		interrupt: true,
+	});
+
+	const handleSound = () => {
+		if (theme === "dark") {
+			setTheme("light");
+		} else {
+			setTheme("dark");
+		}
+		if (sound.isSound === true) {
+			setPlaybackRate(playbackRate + 0.1);
+			play();
+		}
 	};
 
 	return (
@@ -62,7 +91,8 @@ const Navbar: React.FC = () => {
 						{/* mobile button goes here */}
 						<div className="md:hidden flex items-center">
 							<button onClick={handleClick} className="mobile-menu-button">
-								<Menu />
+								{cross ? <X /> : <Menu />}
+								{/* <Menu /> */}
 							</button>
 						</div>
 					</div>
@@ -70,7 +100,7 @@ const Navbar: React.FC = () => {
 				{/* mobile menu */}
 
 				{toggle === true ? (
-					<div className="sidebar md:hidden  md:-translate-x-full  bg-[#fefefe] bg-opacity-90 dark:bg-[#1C2228] font-medium inset-y-0 left-0 transform transition duration-200 ease-in-out  w-64 space-y-6 py-7 px-2 absolute top-0 h-full ">
+					<div className="sidebar md:hidden z-10  md:-translate-x-full  bg-[#fefefe] bg-opacity-90 dark:bg-[#1C2228] font-medium inset-y-0 left-0 transform transition duration-200 ease-in-out  w-64 space-y-6 py-7 px-2 absolute top-0 h-full ">
 						{/* nav */}
 						<nav>
 							<Link href="/">
@@ -105,7 +135,11 @@ const Navbar: React.FC = () => {
 							</Link>
 
 							<div className=" flex items-center space-x-1">
-								<DarkMode />
+								{theme === "dark" ? (
+									<Moon onClick={handleSound} />
+								) : (
+									<Sun onClick={handleSound} />
+								)}
 
 								<div className="py-2 px-3 cursor-pointer">
 									<Volume />
@@ -121,4 +155,8 @@ const Navbar: React.FC = () => {
 	);
 };
 
-export default Navbar;
+const mapStateToProps = (state: any) => ({
+	sound: state.sound,
+});
+
+export default connect(mapStateToProps)(Navbar);

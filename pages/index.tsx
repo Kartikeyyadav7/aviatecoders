@@ -9,7 +9,7 @@ import BlogCard from "../components/BlogCard";
 import InstaCard from "../components/InstaCard";
 import Modal from "../components/Modal";
 import { getPosts } from "../lib/mdx";
-import { Instagram, Twitter } from "react-feather";
+import { Instagram, Twitter, Linkedin } from "react-feather";
 
 interface HomeProps {
 	posts: {
@@ -73,6 +73,13 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 							<Link href="https://twitter.com/aviatecoders">
 								<a>
 									<Twitter />
+								</a>
+							</Link>
+						</div>
+						<div className="ml-5">
+							<Link href="https://linkedin.com/in/aviatecoders">
+								<a>
+									<Linkedin />
 								</a>
 							</Link>
 						</div>

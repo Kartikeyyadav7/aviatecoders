@@ -40,7 +40,7 @@ So in the above example when the JS engine encounters the function call greeting
 
 **A new execution context is created whenever a function is executed as the JS engine goes through the code**
 
-<!-- ![Execution Context](/assets/execution-context.png "Execution Context") -->
+![Execution Contect](/blog/execution-context-lexical-environment-scope-chain/c1.png)
 
 But always the very first execution context is the "Global Execution Context" which is defined even before any code is written in the JS file
 
@@ -54,7 +54,7 @@ In the execution phase, the code is run
 
 As you might know at the beginning the "this" keyword and the window object are the same
 
-<!-- ![Global Execution Context](/assets/global-execution-context.png "Global Execution Context") -->
+![Global Execution Context](/blog/execution-context-lexical-environment-scope-chain/c2.png "Global Execution Context")
 
 ## **Lexical Environment**
 
@@ -95,7 +95,7 @@ Similar is the case with variable b or c because they are both inside their resp
 
 That's why I said to image each function that goes onto the call stack and an execution context is created and it has its planet as well and no one other the function itself can access that planets variables
 
-<!-- ![Lexical Environment](/assets/lexical-environment.png "Lexical Environment") -->
+![Lexical Environment](/blog/execution-context-lexical-environment-scope-chain/c3.png "Lexical Environment")
 
 The same thing can be done with the functions as well we can define functions inside of each other and stuff like that which we are going to cover in the scope chain
 
