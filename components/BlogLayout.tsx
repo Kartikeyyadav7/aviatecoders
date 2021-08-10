@@ -15,8 +15,6 @@ const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
 				{frontMatter.title}
 			</div>
 			
-			
-			
 			<main className="max-w-prose m-auto prose prose-green leading-8 font-medium ">
 			<div >
 			    By {frontMatter.author}

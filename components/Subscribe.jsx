@@ -7,8 +7,8 @@ export default function Subscribe() {
 
 		<div className="max-w-md w-full space-y-8 bg-gray-50  shadow-xl">
 			<div>
-            <div className="ml-44 items-center p-2">
-				<Logo className=" justify-items-center mr-56  h-12 w-auto"/>
+            <div className="ml-44 items-center p-2  justify-items-center mr-56  h-12 w-auto">
+				<Logo />
             </div>
 				<h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
 					Subscribe us..
