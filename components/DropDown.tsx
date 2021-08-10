@@ -57,7 +57,7 @@ const DropDown: React.FC<DropDownProps> = ({ sound }) => {
 					<div>
 						<Link href="/blog/reactnative">
 							<a className="rounded-t hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white hover:font-medium py-2 px-4 block whitespace-no-wrap">
-								React
+								React Native
 							</a>
 						</Link>
 					</div>

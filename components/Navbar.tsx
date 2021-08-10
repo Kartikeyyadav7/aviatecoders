@@ -82,7 +82,9 @@ const Navbar: React.FC<NavbarProps> = ({ checkSound, sound }) => {
 						</div>
 						{/* secondary nav */}
 						<div className="hidden md:flex items-center space-x-1">
-							<DarkMode />
+							<div className="mr-3">
+								<DarkMode />
+							</div>
 
 							<div className="py-2 px-3 cursor-pointer">
 								<Volume />
@@ -92,7 +94,6 @@ const Navbar: React.FC<NavbarProps> = ({ checkSound, sound }) => {
 						<div className="md:hidden flex items-center">
 							<button onClick={handleClick} className="mobile-menu-button">
 								{cross ? <X /> : <Menu />}
-								{/* <Menu /> */}
 							</button>
 						</div>
 					</div>

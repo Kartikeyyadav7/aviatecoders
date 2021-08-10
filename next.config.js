@@ -1,6 +1,10 @@
 module.exports = {
 	images: {
-		domains: ["scontent.cdninstagram.com", "scontent-del1-1.cdninstagram.com"],
+		domains: [
+			"scontent.cdninstagram.com",
+			"scontent-del1-1.cdninstagram.com",
+			"scontent-del1-2.cdninstagram.com",
+		],
 	},
 	reactStrictMode: true,
 	webpack(config, options) {
