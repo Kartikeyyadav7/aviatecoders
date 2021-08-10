@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import cover from "../public/audio/Modal.png";
+
 export default function Modal() {
   const [showModal, setShowModal] = React.useState(false);
   return (
@@ -15,7 +16,7 @@ export default function Modal() {
       {showModal ? (
         <>
           <div className="justify-center items-center rounded-xl flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto rounded-t-lg my-6 mx-auto max-w-3xl">
+            <div className="relative w-auto rounded-t-lg my-6 mx-auto max-w-lg">
               {/*content*/}
               <div className="h-44 w-full flex  bg-[#7579D5]">
                 <Image width={600} height={1200} src={cover}></Image>
@@ -25,7 +26,7 @@ export default function Modal() {
                 <div className="flex items-start justify-between p-3 border-b border-solid border-blueGray-200 rounded-t">
                   <div className="grid max-w-xl grid-cols-1">
                     <div>
-                      <h3 className="text-3xl  ml-56 font-semibold">
+                      <h3 className="text-3xl  ml-44 font-semibold">
                         Subscribe{" "}
                       </h3>
                     </div>
@@ -58,7 +59,7 @@ export default function Modal() {
                       />
                     </div>
                   </div>
-                  <div className="col-span-1 lg:col-span-1">
+                  <div className="col-span-2 lg:col-span-1">
                     <div className=" relative ">
                       <input
                         type="text"
@@ -68,8 +69,8 @@ export default function Modal() {
                       />
                     </div>
                   </div>
-                  <div>
-                    <div className=" w-full ">
+                  <div className="grid col-span-2 lg:col-span-2  md:col-span-2 sm:col-span-2">
+                    <div className=" w-full relative ">
                       <input
                         type="text"
                         id="contact-form-email"
