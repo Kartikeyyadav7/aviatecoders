@@ -99,7 +99,7 @@ const DarkMode: React.FC<DarkModeProps> = ({ sound }) => {
 				style={centerCircleProps}
 				fill={theme === "light" ? "black" : "white"}
 				mask="url(#myMask2)"
-				onClick={() => setTheme("dark")}
+				// onClick={() => setTheme("dark")}
 			/>
 			<animated.g stroke="currentColor" style={linesProps}>
 				<line x1="12" y1="1" x2="12" y2="3" />

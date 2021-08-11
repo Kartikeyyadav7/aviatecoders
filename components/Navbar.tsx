@@ -82,7 +82,12 @@ const Navbar: React.FC<NavbarProps> = ({ sound }) => {
 						{/* secondary nav */}
 						<div className="hidden md:flex items-center space-x-1">
 							<div className="mr-3">
-								<DarkMode />
+								{/* <DarkMode /> */}
+								{theme === "dark" ? (
+									<Moon onClick={handleSound} fill="white" />
+								) : (
+									<Sun onClick={handleSound} fill="black" />
+								)}
 							</div>
 
 							<div className="py-2 px-3 cursor-pointer">
@@ -136,9 +141,9 @@ const Navbar: React.FC<NavbarProps> = ({ sound }) => {
 
 							<div className=" flex items-center space-x-1">
 								{theme === "dark" ? (
-									<Moon onClick={handleSound} />
+									<Moon onClick={handleSound} fill="white" />
 								) : (
-									<Sun onClick={handleSound} />
+									<Sun onClick={handleSound} fill="black" />
 								)}
 
 								<div className="py-2 px-3 cursor-pointer">

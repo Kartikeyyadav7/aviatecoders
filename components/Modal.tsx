@@ -37,8 +37,8 @@ export default function Modal() {
 								<div className="flex items-start justify-between p-3 border-b border-solid border-blueGray-200 rounded-t">
 									<div className="grid max-w-xl grid-cols-1">
 										<div>
-											<h3 className="text-xl md:text-3xl  text-center font-semibold">
-												Subscribe{" "}
+											<h3 className="text-xl md:text-3xl  text-[#1E2E46] text-center font-semibold">
+												Subscribe
 											</h3>
 										</div>
 										<div className="mt-2">
