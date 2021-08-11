@@ -81,7 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ sound }) => {
 						</div>
 						{/* secondary nav */}
 						<div className="hidden md:flex items-center space-x-1">
-							<div className="mr-3">
+							<div className="mr-3 cursor-pointer">
 								{/* <DarkMode /> */}
 								{theme === "dark" ? (
 									<Moon onClick={handleSound} fill="white" />
