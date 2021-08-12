@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.aviatecoders.com
+
+# Sitemaps
+Sitemap: https://www.aviatecoders.com/sitemap.xml
