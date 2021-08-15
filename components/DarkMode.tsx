@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useSpring, animated } from "react-spring";
 import { useTheme } from "next-themes";
 import useSound from "use-sound";
+import { context } from "../state";
 const Clicked = require("../public/audio/clicked.mp3");
-import { connect } from "react-redux";
 
 interface DarkModeProps {
 	sound: {
@@ -12,6 +12,7 @@ interface DarkModeProps {
 }
 
 const DarkMode: React.FC<DarkModeProps> = ({ sound }) => {
+	const { state } = useContext(context);
 	const { theme, setTheme } = useTheme();
 	const [toggle, setToggle] = useState(false);
 	const handleToggleTheme = () => {
@@ -33,7 +34,7 @@ const DarkMode: React.FC<DarkModeProps> = ({ sound }) => {
 	});
 
 	const handleSound = () => {
-		if (sound.isSound === true) {
+		if (state.isSound === true) {
 			setPlaybackRate(playbackRate + 0.1);
 			play();
 		}
@@ -116,8 +117,4 @@ const DarkMode: React.FC<DarkModeProps> = ({ sound }) => {
 	);
 };
 
-const mapStateToProps = (state: any) => ({
-	sound: state.sound,
-});
-
-export default connect(mapStateToProps)(DarkMode);
+export default DarkMode;

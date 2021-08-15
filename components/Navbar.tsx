@@ -1,21 +1,19 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Menu, Sun, Moon, X } from "react-feather";
 import Logo from "./Logo";
 import DarkLogo from "./DarkLogo";
 import useSound from "use-sound";
 import { useTheme } from "next-themes";
-import DarkMode from "./DarkMode";
 import Volume from "./Volume";
 import DropDown from "./DropDown";
-import { connect } from "react-redux";
+import { context } from "../state";
 const Clicked = require("../public/audio/clicked.mp3");
 
-interface NavbarProps {
-	sound: any;
-}
+interface NavbarProps {}
 
-const Navbar: React.FC<NavbarProps> = ({ sound }) => {
+const Navbar: React.FC<NavbarProps> = () => {
+	const { state } = useContext(context);
 	const { theme, setTheme } = useTheme();
 	const [toggle, setToggle] = useState(false);
 	const [cross, setCross] = useState(false);
@@ -37,7 +35,7 @@ const Navbar: React.FC<NavbarProps> = ({ sound }) => {
 		} else {
 			setTheme("dark");
 		}
-		if (sound.isSound === true) {
+		if (state.isSound === true) {
 			setPlaybackRate(playbackRate + 0.1);
 			play();
 		}
@@ -160,8 +158,4 @@ const Navbar: React.FC<NavbarProps> = ({ sound }) => {
 	);
 };
 
-const mapStateToProps = (state: any) => ({
-	sound: state.sound,
-});
-
-export default connect(mapStateToProps)(Navbar);
+export default Navbar;

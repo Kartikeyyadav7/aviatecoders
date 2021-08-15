@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ChevronDown } from "react-feather";
 import Link from "next/link";
 import useSound from "use-sound";
-import { connect } from "react-redux";
+import { context } from "../state";
 const Pop = require("../public/audio/pop.mp3");
 
-interface DropDownProps {
-	sound: {
-		isSound: boolean;
-	};
-}
+interface DropDownProps {}
 
-const DropDown: React.FC<DropDownProps> = ({ sound }) => {
+const DropDown: React.FC<DropDownProps> = () => {
+	const { state } = useContext(context);
 	const [playbackRate, setPlaybackRate] = React.useState(0.75);
 
 	const [play] = useSound(Pop, {
@@ -20,7 +17,7 @@ const DropDown: React.FC<DropDownProps> = ({ sound }) => {
 	});
 
 	const handleSound = () => {
-		if (sound.isSound === true) {
+		if (state.isSound === true) {
 			setPlaybackRate(playbackRate + 0.1);
 			play();
 		}
@@ -67,8 +64,10 @@ const DropDown: React.FC<DropDownProps> = ({ sound }) => {
 	);
 };
 
-const mapStateToProps = (state: any) => ({
-	sound: state.sound,
-});
+// const mapStateToProps = (state: any) => ({
+// 	sound: state.sound,
+// });
 
-export default connect(mapStateToProps)(DropDown);
+// export default connect(mapStateToProps)(DropDown);
+
+export default DropDown;

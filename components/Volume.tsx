@@ -1,16 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSpring, animated } from "react-spring";
-import { connect } from "react-redux";
-import { checkSound } from "../redux/actions/soundAction";
 import useSound from "use-sound";
 const Volumes = require("../public/audio/pop.mp3");
+import { context } from "../state";
 
-interface VolumeProps {
-	checkSound: any;
-	sound: any;
-}
+interface VolumeProps {}
 
-const Volume: React.FC<VolumeProps> = ({ checkSound, sound }) => {
+const Volume: React.FC<VolumeProps> = () => {
+	const { state, dispatch } = useContext(context);
 	const [playbackRate, setPlaybackRate] = useState(0.95);
 
 	const [play] = useSound(Volumes, {
@@ -40,13 +37,13 @@ const Volume: React.FC<VolumeProps> = ({ checkSound, sound }) => {
 		},
 	};
 
-	const { transform } = properties[sound.isSound ? "Sun" : "Moon"];
+	const { transform } = properties[state.isSound ? "Sun" : "Moon"];
 
 	const svgContainerProps = useSpring({ transform });
 
 	return (
 		<div>
-			{sound.isSound ? (
+			{state.isSound ? (
 				<animated.svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -59,7 +56,7 @@ const Volume: React.FC<VolumeProps> = ({ checkSound, sound }) => {
 					strokeLinejoin="round"
 					className="feather feather-volume-2"
 					onClick={(event) => {
-						checkSound();
+						dispatch({ type: "SET_SOUND" });
 						handleClick();
 					}}
 					style={{
@@ -84,7 +81,7 @@ const Volume: React.FC<VolumeProps> = ({ checkSound, sound }) => {
 					strokeLinejoin="round"
 					className="feather feather-volume-2"
 					onClick={function (event) {
-						checkSound();
+						dispatch({ type: "SET_SOUND" });
 						handleClick();
 					}}
 					style={{
@@ -99,8 +96,10 @@ const Volume: React.FC<VolumeProps> = ({ checkSound, sound }) => {
 	);
 };
 
-const mapStateToProps = (state: any) => ({
-	sound: state.sound,
-});
+// const mapStateToProps = (state: any) => ({
+// sound: state.sound,
+// });
 
-export default connect(mapStateToProps, { checkSound })(Volume);
+// export default connect(mapStateToProps, { checkSound })(Volume);
+
+export default Volume;

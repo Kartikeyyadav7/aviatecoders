@@ -1,15 +1,15 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "next-themes";
-import { Provider } from "react-redux";
-import store from "../redux/store";
 import { positions, Provider as ReactAlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
 import * as ga from "../lib/ga";
+import { defaultState, reducer, Provider } from "../state";
 
 function MyApp({ Component, pageProps }: AppProps) {
+	const [state, dispatch] = useReducer(reducer, defaultState);
 	const router = useRouter();
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 	};
 	return (
 		<ReactAlertProvider template={AlertTemplate} {...options}>
-			<Provider store={store}>
+			<Provider value={{ state, dispatch }}>
 				<ThemeProvider attribute="class">
 					<Component {...pageProps} />
 				</ThemeProvider>
