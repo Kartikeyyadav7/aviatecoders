@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 		timeout: 5000,
 		position: positions.BOTTOM_CENTER,
 	};
+
 	return (
 		<ReactAlertProvider template={AlertTemplate} {...options}>
 			<Provider value={{ state, dispatch }}>
