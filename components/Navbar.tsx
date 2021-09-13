@@ -65,11 +65,11 @@ const Navbar: React.FC<NavbarProps> = () => {
 										<DropDown />
 									</Link>
 								</div>
-								<div className="hover:underline">
+								{/* <div className="hover:underline">
 									<Link href="/feed">
 										<a className="py-5 px-3 ">Feed</a>
 									</Link>
-								</div>
+								</div> */}
 								<div className="hover:underline">
 									<Link href="/contact">
 										<a className="py-5 px-3 ">Contact</a>
