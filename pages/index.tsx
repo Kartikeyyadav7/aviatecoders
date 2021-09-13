@@ -124,9 +124,9 @@ const Home: React.FC<HomeProps> = ({ posts, postList }) => {
 					</Link>
 				))}
 			</div>
-			<div className="ml-0.5 lg:font-semibold lg:text-3xl md:font-medium md:text-2xl text-xl font-medium mb-4 mt-5 ">
+			{/* <div className="ml-0.5 lg:font-semibold lg:text-3xl md:font-medium md:text-2xl text-xl font-medium mb-4 mt-5 ">
 				<h1>Instagram Feed</h1>
-			</div>
+			</div> */}
 			{/* <div className="flex flex-wrap h-full justify-between  ">
 				{postList.data.slice(0, 6).map((post) => (
 					<Link
