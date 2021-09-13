@@ -24,6 +24,8 @@ I am assuming that you guys know what the "window" object because the "_this_" k
 
 Now when you type in your console
 
+<!-- {/* <CodeHighlight>this === window; // true</CodeHighlight> */} -->
+
 ```javascript
 this === window; // true
 ```
@@ -42,8 +44,7 @@ Let's understand this a little better by an example
 function hello() {
 	console.log(this);
 }
-hello(); // the output will be the window object
-window.hello();
+hello(); // the output will be the window object window.hello()
 ```
 
 In the above example as you can see

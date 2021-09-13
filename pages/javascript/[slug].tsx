@@ -9,7 +9,8 @@ import Layout from "../../components/Layout";
 import BlogLayout from "../../components/BlogLayout";
 import { postPath, getHeadings, paths } from "../../lib/mdx";
 // import dynamic from "next/dynamic";
-// import CustomLink from "../../components/CustomLink";
+import CodeHighlight from "../../components/CodeHighlight";
+import { ClassAttributes, HTMLAttributes } from "react";
 
 interface JavascriptPageProps {
 	frontMatter: {
@@ -24,13 +25,14 @@ interface JavascriptPageProps {
 	source: MDXRemoteSerializeResult;
 }
 
-// const components = {
-// 	a: CustomLink,
-// It also works with dynamically-imported components, which is especially
-// useful for conditionally loading components for certain routes.
-// 	TestComponent: dynamic(() => import("../../components/TestComponent")),
-// 	Head,
-// };
+const components = {
+	pre: (
+		props: JSX.IntrinsicAttributes &
+			ClassAttributes<HTMLDivElement> &
+			HTMLAttributes<HTMLDivElement>
+	) => <div {...props} />,
+	code: CodeHighlight,
+};
 
 const JavascriptPage: React.FC<JavascriptPageProps> = ({
 	source,
@@ -45,7 +47,7 @@ const JavascriptPage: React.FC<JavascriptPageProps> = ({
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<BlogLayout frontMatter={frontMatter}>
-				<MDXRemote {...source} />
+				<MDXRemote {...source} components={components} />
 			</BlogLayout>
 		</Layout>
 	);
@@ -57,7 +59,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const source = fs.readFileSync(postFilePath, "utf8");
 
 	const headings = getHeadings(source);
-	console.log(headings);
+	// console.log(headings);
 
 	const { content, data } = matter(source);
 

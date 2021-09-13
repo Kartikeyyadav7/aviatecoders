@@ -8,6 +8,7 @@ import path from "path";
 import Layout from "../../components/Layout";
 import BlogLayout from "../../components/BlogLayout";
 import { postPath, getHeadings, paths } from "../../lib/mdx";
+import CodeHighlight from "../../components/CodeHighlight";
 
 interface WebdevProps {
 	frontMatter: {
@@ -22,6 +23,11 @@ interface WebdevProps {
 	source: MDXRemoteSerializeResult;
 }
 
+const components = {
+	pre: (props) => <div {...props} />,
+	code: CodeHighlight,
+};
+
 const WebdevPage: React.FC<WebdevProps> = ({ source, frontMatter }) => {
 	return (
 		<Layout>
@@ -31,7 +37,7 @@ const WebdevPage: React.FC<WebdevProps> = ({ source, frontMatter }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<BlogLayout frontMatter={frontMatter}>
-				<MDXRemote {...source} />
+				<MDXRemote {...source} components={components} />
 			</BlogLayout>
 		</Layout>
 	);

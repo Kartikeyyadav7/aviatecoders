@@ -1,7 +1,8 @@
 {
 	"rules": {
 		"next/no-img-element": "off",
-		"react/no-unescaped-entities": "off"
+		"react/no-unescaped-entities": "off",
+		"react/display-name": "off"
 	},
 	"extends": ["next"]
 }
