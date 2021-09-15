@@ -18,7 +18,7 @@ So you might have heard about these famous methods especially the bind method as
 
 ```javascript
 function greeting() {
-	console.log("hello");
+  console.log("hello");
 }
 greeting(); // hello
 greeting.call(); //hello
@@ -29,38 +29,38 @@ This is a very simple code that I have written, it's just a function named greet
 
 As you see from the code snippet that I have also written the output of the function call so the first that we regularly use is the normal function call and it outputs hello but the next is also a function call which we use doing the call method and it gives the same output as hello and lastly using apply method we also get the same output
 
-Well underneath the hood JS uses .call() method where a function is invoked that means greeting.call() is always used and greeting() is just the shortcut way to write that
+Well under the hood JS uses .call() method where a function is invoked that means greeting.call() is always used and greeting() is just the shortcut way to write that
 And when we use apply it gives the same result
 
 We have seen the result of using call and apply but now let's see how they can be useful
 
 ```javascript
 const student1 = {
-	name: "Harry",
-	percent: 60,
-	increment() {
-		return (this.percent = 100);
-	},
+  name: "Harry",
+  percent: 60,
+  increment() {
+    return (this.percent = 100);
+  },
 };
 student1.increment();
 ```
 
 What I have done here is I have defined an object named student1 and given name and percent and also an increment method to it so that the percent can be incremented whenever the method is called( if you don't know about the "this" keyword please refer to [this](https://www.aviatecoders.com/how-this-keyword-works-in-javascript)[ ](https://developersdomain.netlify.app/how-this-keyword-works-in-javascript)article)
 
-Now what I want to do is used use increment method of the student1 and use it for another object named student2
+Now what I want to do is to use increment method of the student1 on another object named student2
 
 ```javascript
 const student1 = {
-	name: "Harry",
-	percent: 60,
-	increment() {
-		return (this.percent = 100);
-	},
+  name: "Harry",
+  percent: 60,
+  increment() {
+    return (this.percent = 100);
+  },
 };
 
 const student2 = {
-	name: "Marry",
-	percent: 30,
+  name: "Marry",
+  percent: 30,
 };
 
 student1.increment();
@@ -73,16 +73,16 @@ Also, the call method can accept parameters like so
 
 ```javascript
 const student1 = {
-	name: "Harry",
-	percent: 60,
-	increment(num1, num2) {
-		return (this.percent += num1 + num2);
-	},
+  name: "Harry",
+  percent: 60,
+  increment(num1, num2) {
+    return (this.percent += num1 + num2);
+  },
 };
 
 const student2 = {
-	name: "Marry",
-	percent: 30,
+  name: "Marry",
+  percent: 30,
 };
 
 student1.increment(10, 20);
@@ -98,16 +98,16 @@ Now we know what call does and now let's see what apply does differently from th
 
 ```javascript
 const student1 = {
-	name: "Harry",
-	percent: 60,
-	increment(num1, num2) {
-		return (this.percent += num1 + num);
-	},
+  name: "Harry",
+  percent: 60,
+  increment(num1, num2) {
+    return (this.percent += num1 + num);
+  },
 };
 
 const student2 = {
-	name: "Marry",
-	percent: 30,
+  name: "Marry",
+  percent: 30,
 };
 
 student1.increment(10, 20); //90
@@ -120,7 +120,7 @@ Well apply doesn't do anything much different it just changes the way we pass ar
 
 Now if you want to choose whether to use call or apply it depends on how to want to pass the arguments, if you want to pass them as an array then use apply, if you want to pass normally use call
 
-Also as you can see from the above example the method increment has the "this" keyword which helps us to use it in other objects as well, if a method doesn't have that can't use it
+Also as you can see from the above example the method increment has the "this" keyword which helps us to use it in other objects as well, if a method doesn't have that we can't use it
 
 ## Bind method
 
@@ -130,16 +130,16 @@ Well unlike call and apply which instantly give the output, bind on the other ha
 
 ```javascript
 const student1 = {
-	name: "Harry",
-	percent: 60,
-	increment(num1, num2) {
-		return (this.percent += num1 + num2);
-	},
+  name: "Harry",
+  percent: 60,
+  increment(num1, num2) {
+    return (this.percent += num1 + num2);
+  },
 };
 
 const student2 = {
-	name: "Marry",
-	percent: 30,
+  name: "Marry",
+  percent: 30,
 };
 
 student1.increment(10, 20); //90
@@ -157,14 +157,14 @@ Let me explain the bind method passes the "this" keyword which refers to a certa
 
 ```javascript
 const singer = {
-	name: "Joy",
-	sing() {
-		console.log("1", this);
-		var singAgain = function () {
-			console.log("2", this);
-		};
-		return singAgain.bind(this);
-	},
+  name: "Joy",
+  sing() {
+    console.log("1", this);
+    var singAgain = function () {
+      console.log("2", this);
+    };
+    return singAgain.bind(this);
+  },
 };
 
 singer.sing()();

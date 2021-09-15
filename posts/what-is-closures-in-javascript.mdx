@@ -37,10 +37,10 @@ We know how to call functions
 
    ```javascript
    const obj = {
-   	name: "Jett",
-   	speed() {
-   		console.log("Woos");
-   	},
+     name: "Jett",
+     speed() {
+       console.log("Woos");
+     },
    };
    obj.speed();
    ```
@@ -66,7 +66,7 @@ We know that whenever a function is called or invoked it creates an execution co
 
 > **_Functions are a special type of object which are called callable objects in JS_**
 
-Why you ask, well we can back that claim up because if you imagine a box with the name of the function and some code and three properties - call, apply and bind
+Why you ask, well we can back that claim up because if you imagine a box with the name of the function and some code with three properties - call, apply and bind
 
 ![Function](/blog/what-is-closures-in-javascript/closure-1.png "Inside of the function")
 
@@ -80,7 +80,7 @@ Now how does this concern us, well if functions are objects then we can store th
 
 > **_Functions are first-class citizens in JS_**
 
-What does that mean well three things back that claim
+What does that means, well three things back that claim
 
 1.We can store a function into a variable
 
@@ -92,10 +92,10 @@ var greet = function () {};
 
 ```javascript
 function greet(fn) {
-	fn();
+  fn();
 }
 greet(function () {
-	console.log("hello");
+  console.log("hello");
 });
 ```
 
@@ -103,9 +103,9 @@ greet(function () {
 
 ```javascript
 function greet() {
-	return function () {
-		console.log("Hi there");
-	};
+  return function () {
+    console.log("Hi there");
+  };
 }
 
 greet()();
@@ -115,9 +115,9 @@ So basically what I am trying to say is function can do pretty much everything o
 
 ### Higher-Order Functions (HOF)
 
-A HOF is a function that can return a function or a function that can take function for an arguments as you have seen from the above examples
+A HOF is a function that can return a function or a function that can take function for an arguments as you have seen in above examples
 
-And we also know about the lexical scoping in JS and if you don't then you can refer to [](https://developersdomain.netlify.app/execution-context-lexical-environmenet-scope-chain)[this](https://www.aviatecoders.com/execution-context-lexical-environmenet-scope-chain) article but in short, let me tell you
+And we also know about the lexical scoping in JS and if you don't, then you can refer to [](https://developersdomain.netlify.app/execution-context-lexical-environmenet-scope-chain)[this](https://www.aviatecoders.com/execution-context-lexical-environmenet-scope-chain) article but in short, let me tell you
 
 Lexical scoping or static scoping means the available variable data and functions are dependent on where the function is defined
 
@@ -127,15 +127,15 @@ Now finally to explain Closures let's start with an example
 
 ```javascript
 function hello() {
-	console.log("greetings");
-	var a = "hi";
-	return function b() {
-		var b = "hi there";
-		return function c() {
-			var c = "hello there";
-			return `${a} ${b} ${c}`;
-		};
-	};
+  console.log("greetings");
+  var a = "hi";
+  return function b() {
+    var b = "hi there";
+    return function c() {
+      var c = "hello there";
+      return `${a} ${b} ${c}`;
+    };
+  };
 }
 
 hello()()(); // hi hi there hello there
@@ -159,9 +159,9 @@ This is one of the coolest parts of JS and it can have many uses such they can b
 
 ```javascript
 function work(index) {
-	const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
-	console.log("created");
-	return arr[index];
+  const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
+  console.log("created");
+  return arr[index];
 }
 
 work(55); // created
@@ -175,11 +175,11 @@ What we can do instead is
 
 ```javascript
 function work(index) {
-	const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
-	console.log("created");
-	return function () {
-		return arr[index];
-	};
+  const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
+  console.log("created");
+  return function () {
+    return arr[index];
+  };
 }
 
 const workHard = work();

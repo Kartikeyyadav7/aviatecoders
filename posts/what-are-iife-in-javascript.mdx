@@ -18,29 +18,29 @@ ONE of the important concepts of JavaScript is IIFE and so we will try to make y
 
 From the things we have learned about execution context and scoping (refer to the previous blog [here](https://www.aviatecoders.com/execution-context-lexical-environmenet-scope-chain)) you might have noticed some issue and the problem is that whenever we define a variable we have to be careful to not repeat the same name twice or in other words avoiding namespace collisions in the global execution context
 
-Now this is not a big problem if you consider a small size application but when our application becomes big and when we have multiple developers working on the same project and we have multiple JS files and at times like that we encounter this problem
+Now this is not a big problem if you consider a small size application but when our application becomes big and when we have multiple developers working on the same project and we have multiple JS files, this problem can be faced very frequently.
 
 Let's see why global variables are bad
 
 1. First if we define too many variables into the global scope we might end up filling our memory heap with so much data and it could crash our browser
-2. The second reason is that even if we don't have many variables there comes a problem like if we define the name of the variable same because it might happen so it will lead to other problems like changing the previous names actual data and create many bugs
+2. The second reason is that even if we don't have many variables there comes a problem like if we define the name of the variable same because it might happen so it will lead to other problems like changing the previous names actual data and this results to many bugs
 
-Even if we use different script tags and different Js files it all comes down to a single file and having the same names for the variable will lead to many bugs and problems and pollutes the global namespace
+Even if we use different script tags and different Js files it all comes down to a single file and having the same names for the variable will lead to many bugs and problems which pollutes the global namespace
 
 But that's where IIFE comes which are Immediately Invoked Function Expression
 
-by reading the full form might have thought what the heck is this so let me know what it exactly is
+by reading the full form you might have thought what the heck is this so let me explain what it exactly is,
 
 ```javascript
 //IIFE
 (function () {
-	//code
+  //code
 })();
 ```
 
 As you can see this is an IIFE and it is also a function expression,
 
-You might ask why it is a function expression well when the JS engine parses through the code it doesn't encounter _function_ keyword instead it encounters "(" and so it is a function expression
+You might ask why it is a function expression, well when the JS engine parses through the code it doesn't encounter _function_ keyword instead it encounters "(" and so it is a function expression
 
 Now whatever you will write inside the IIFE will not be accessible to the outside function expression and because of that, it doesn't pollute the global namespace as simple as that.
 
@@ -54,7 +54,7 @@ function(){
 
 This idea of IIFE became very popular back in the day and many libraries still use it like jQuery use IIFE and its just a popular way to avoid namespace collisions
 
-But with the introduction of ES6 Modules and things like that not many applications now don't use IIFE but it really is a very intriguing concept and is often asked in interviews so there is no harm in learning them
+But with the introduction of ES6 Modules and things like that not many applications now don't use IIFE, but it really is a very intriguing concept and is often asked in interviews so there is no harm in learning them
 
 Was the article helpful? Do you have any doubts? Any topic you would like us to cover?
 
