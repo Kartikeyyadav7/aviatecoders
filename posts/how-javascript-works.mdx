@@ -10,25 +10,25 @@ category: javascript
 layout: blog
 ---
 
-We have used Javascript many times but do we really know, how it works and how much of a powerful language it is
+We have used Javascript many times but do we really know, how it works and how powerful language it is
 
-Well for some of that curious fellow who wants to know everything about Javascript and how it works under the hood, this article might help you, lets go step by step and understand it, Let's go.
+Well for some of that curious fellow who wants to know everything about Javascript and how it works under the hood, this article will really help you, lets go step by step and understand it, Let's go.
 
 So starting with the basics, we all know that the computer knows only 1's and 0's so how are we able to communicate with the computer using Js, any guesses, yeah we use the Javascript Engine to do so
 
 ### JavaScript Engine
 
-Now that I have told you about the engine you might have also heard of the famous Chrome's V8 engine which is written in C++ and it is responsible to make the computer understand what we write in Javascript and convert it into something the computer can understand.
+Now that I have told you about the engine you might have also heard of the famous Chrome's V8 engine which is written in C++ and it is responsible to make the computer understand what we write in Javascript and convert it into language that computer can understand.
 
 Are you wondering what Chrome's V8 engine does? , are there any other engines for other browsers like firefox or safari?
 
-Ok so, first of all, there are many engines out there and every browser uses a different engine and every engine is slightly different from each other like they have a different architecture like Mozilla Firefox uses Spidermonkey and it kind of has a different approach but in the end, they all solve the same problem.
+Ok so, first of all, there are many engines out there and every browser uses a different engine and every engine is slightly different from each other like they have a different architecture like Mozilla Firefox uses Spidermonkey and its kind of has a different approach but in the end, they all solve the same problem.
 
-But the fun part is that everyone can build a Js engine and yes even you can build that engine but always understand that you have to abide by the rules and regulations which are set by EcmaScript which is the governing body which tells how to use JS and how it is standardized and it tells the engine creators how JS should work, but internally how you build your engine is entirely up to you as long as it is in within the standards.
+But the fun part is that everyone can build a Js engine and yes even you can build that engine but always understand that you have to abide by the rules and regulations which are set by EcmaScript which is the governing body which tells how to use JS and how it is standardized and it governs the engine creators how JS should work, but internally how you build your engine is entirely up to you as long as it is in within the standards.
 
 ## Working of V8 Engine
 
-We will talk a bit about how the V8 engine works and how it works under the hood, the main reason we are talking about that particular engine is that it is very popular and one the most used engine but also because all other engines are mostly the same but little change here and there
+We will talk a bit about how the V8 engine works and how it works under the hood, the main reason we are talking about that particular engine is that it is very popular and one the most used engine and also because all other engines that exixts are mostly the same with little changes here and there
 
 ![Javascript Engine](/blog/how-javascript-works/js-engine.png "Javascript Engine")
 
@@ -38,7 +38,7 @@ In the above-given pic, the Js file goes inside the engine and there is a long p
 
 So first the Js file is broken into packets and separated into different parts using the Parser and then the packets goes into the AST ( Abstract Syntax Tree ) which makes the packets into an organized tree-like structure after that it is passed into the Interpreter.
 
-For those who don't have a clue about interpreter and I will explain it in comparison to a compiler so it's easy to understand, if you want to know about that in form of carousal and stuff you can refer to our post on[ Instagram](https://instagram.com/aviatecoders)
+For those who don't have a clue about interpreter let me explain it in comparison to a compiler so it's easy to understand, if you want to know about it in crisp and to the point you can refer to our post on[ Instagram](https://instagram.com/aviatecoders)
 
 Now there are two ways a code in whichever language can be changed to machine code or a code which machine understands using the interpreter or a compiler, some languages use the interpreter to do it and others use the compiler and some use both.
 
@@ -54,27 +54,27 @@ The compiler on the other hand first scans the code that is it goes through your
 
 Now, why would we use something like interpreter over compiler, well interpreter can start fast because it just translates them on the fly and is quick to do so and as the browser uses Js we can understand that it is important for it runs fast because the user of the browser is waiting for the page to load or do something and if it doesn't it will create a bad user experience.
 
-But a problem arose that when the code used to big enough and it had loops to do certain tasks it would take time as it goes line by line and that thing got really messy and very slow.
+But a problem arises when the code is big enough and it has loops to do certain tasks it would take time as it goes line by line and that thing got really messy and very slow.
 
-But in the case of a compiler we know it took some time to start up because it had to go through the entire code once and convert it into a different language altogether but it used to do some many optimizations into the code which made it work faster on a long run
+But in the case of a compiler we know it took some time to start up because it had to go through the entire code once and convert it into a different language altogether but it used to do so many optimizations into the code which made it work faster on a long run
 
 ## JIT Compiler
 
 So the question is should we use an interpreter or a compiler because now we know there are pros and cons to both of them and then what happened is the engineers at the big companies thought of mixing the pros of both the worlds and make a JIT compiler or you may have heard as Just-in-time compilers to make their engine work faster
 
-Well now that we know about the compiler and interpreter, we move onto the next process that is when the code is transferred from AST to Interpreter it changes that code into byte code and what happens is that whenever there can be some optimizations done with the code it which is checked by the Profiler it is passed down to the compiler or the JIT compiler which takes the code and outputs an optimized code and this process runs in a loop again and again and eventually our code in Js becomes faster because optimizations are done again and again
+Well now that we know about the compiler and interpreter, we move onto the next process that is when the code is transferred from AST to Interpreter it changes that code into byte code and what happens is that whenever there can be some optimizations done with the code which is checked by the Profiler it is then passed down to the compiler or the JIT compiler which takes the code and outputs an optimized version of code and this process runs in a loop again and again and eventually our code in Js becomes faster because optimizations are done again and again
 
 This is how the V8 engine works
 
-Now if you have noticed in the above figure there is a section of the Call Stack and the Memory Heap, you might have wondered what is the function of those things so let's see.
+Now if you have noticed in the above figure there is a section of the Call Stack and the Memory Heap, you might have wondered what are the function of these things so let's have a look.
 
 ## Call Stack
 
-First, let's see what a stack is, so Stack is a Data Structure that you can visualize like an array where you can only push and pop like remove and add elements at the end.
+First, let's see what a stack is, so Stack is a Data Structure that you can visualize like an array where you can only push and pop like remove and add elements from the top.
 
-Now we know what call is, it's just the calling of a function. Briefly, CallStack is the list of functions that are supposed to run by the interpreter for visual content we have a [post](https://www.instagram.com/p/CHNtqjiA-8z/) about this you might like to check that out.
+We know what call is, it's just the calling of a function. Briefly, CallStack is the list of functions that are supposed to run by the interpreter for visual content we have a [post](https://www.instagram.com/p/CHNtqjiA-8z/) about this you might like to check that out.
 
-The Call Stack you can imagine it as the place where a function is executed one by one that is it forms a stack of functions that are happening in the program, you can go and visualize this in the Chrome browsers inspect tool and then to the sources tab where you can add a snippet and then run the code and there is a column to the right where you can see the Call Stack and it displays each process.
+The Call Stack you can imagine it as the place where a function is executed one by one that is it forms a stack of functions that are to be executed in the program, you can go and visualize this in the Chrome browsers inspect tool and then to the sources tab where you can add a snippet and then run the code and there is a column to the right where you can see the Call Stack and it displays each process.
 
 How the call stack works is that when you start to execute a program and a function is called and goes onto the call stack after that the function returns something and then it is popped off the stack, after that another function is put on the stack and the same process continues until the whole program is executed.
 

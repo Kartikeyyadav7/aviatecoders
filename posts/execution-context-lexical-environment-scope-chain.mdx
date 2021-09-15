@@ -24,11 +24,11 @@ _We can say that every function that goes into the call stack has its execution 
 
 ```javascript
 function hello() {
-	return "Hey guys";
+  return "Hey guys";
 }
 
 function greetings() {
-	return hello();
+  return hello();
 }
 
 greetings();
@@ -36,7 +36,7 @@ greetings();
 
 Let's see this with an example
 
-So in the above example when the JS engine encounters the function call greetings( ) it makes an execution context of that function and puts it onto the call stack and after that, it encounters hello( ) and makes its execution context and puts it onto the stack and finally, it returns "Hey Guys" and everything pops off one by one.
+So in the above example when the JS engine encounters the function call greetings( ) it makes an execution context of that function and puts it into the call stack and after that, it encounters hello( ) and makes its execution context and puts it into the stack and finally, it returns "Hey Guys" and everything pops off one by one.
 
 **A new execution context is created whenever a function is executed as the JS engine goes through the code**
 
@@ -50,7 +50,7 @@ It has two phases the creation phase and the execution phase
 
 In the creation phase, there is the window object, "this" keyword, and hoisting and
 
-In the execution phase, the code is run
+In the execution phase, the code is executed
 
 As you might know at the beginning the "this" keyword and the window object are the same
 
@@ -60,26 +60,26 @@ As you might know at the beginning the "this" keyword and the window object are 
 
 Before going into the lexical environment, let's understand what lexical means well it means where you write something or define something
 
-So, as we know that when our program is run we have execution context of functions on the call stack and you can understand the lexical environment as each function has its planet where its variable is located and no one outside of the planet can use those variables
+So, as we know that when our program runs we have execution context of functions on the call stack and you can understand the lexical environment as each function has its planet where its variable is located and no one outside of the planet can use those variables
 
 Let's understand this with an example
 
 ```javascript
 function hello() {
-	console.log("hell");
-	const a = 10;
+  console.log("hell");
+  const a = 10;
 }
 
 function greet() {
-	console.log("greet");
-	const b = 20;
-	hello();
+  console.log("greet");
+  const b = 20;
+  hello();
 }
 
 function start() {
-	console.log("starting greet");
-	const c = 30;
-	greet();
+  console.log("starting greet");
+  const c = 30;
+  greet();
 }
 
 const d = 40;
@@ -89,15 +89,15 @@ start();
 
 Here as you can see when the start() function is called, it starts execution each function one by one, now if you want to see this in action please go to this ([latentflip](http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D)) website and copy-paste the code
 
-So as you can see the hello function has variable a but the function hello doesn't have access to other variables like the variable b or c because they on another function but it does have access to variable d because it's on the global scope or environment
+So as you can see the hello function has variable a but the function hello doesn't have access to other variables like the variable b or c because they exist in another function but it does have access to variable d because it's in the global scope or environment
 
 Similar is the case with variable b or c because they are both inside their respective functions and only have access to their variables and that's what lexical environment means
 
-That's why I said to image each function that goes onto the call stack and an execution context is created and it has its planet as well and no one other the function itself can access that planets variables
+That's why I said to image each function that goes onto the call stack and an execution context is created and it has its own planet where no one other than creator function can access it.
 
 ![Lexical Environment](/blog/execution-context-lexical-environment-scope-chain/c3.png "Lexical Environment")
 
-The same thing can be done with the functions as well we can define functions inside of each other and stuff like that which we are going to cover in the scope chain
+The same thing can be done with the functions as well we can define functions inside of each other and things related to it, lets understand it in the scope chain
 
 So just remember that when we say lexical environment it just means where is that variable or function written in our code
 
@@ -111,17 +111,17 @@ Now how it does that well depends majorly on where the function is defined so if
 
 ```javascript
 function hello() {
-	console.log("hell");
+  console.log("hell");
 }
 
 function greet() {
-	console.log("greet");
-	hello();
+  console.log("greet");
+  hello();
 }
 
 function start() {
-	console.log("starting greet");
-	greet();
+  console.log("starting greet");
+  greet();
 }
 ```
 
@@ -135,15 +135,15 @@ But in this example
 
 ```javascript
 function start() {
-	console.log("hell");
-	var a = "a";
-	return function hello() {
-		var b = "b";
-		return function greet() {
-			var c = "c";
-			return "Ok";
-		};
-	};
+  console.log("hell");
+  var a = "a";
+  return function hello() {
+    var b = "b";
+    return function greet() {
+      var c = "c";
+      return "Ok";
+    };
+  };
 }
 
 start(); // this will invoke function hello()
@@ -183,11 +183,11 @@ eg
 
 ```javascript
 if (5 > 4) {
-	var secret = "555";
+  var secret = "555";
 }
 
 function secret() {
-	var secret2 = "555";
+  var secret2 = "555";
 }
 
 //In javascript we can access the secret variable from here like outside of the if statement
