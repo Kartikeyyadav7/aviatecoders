@@ -20,7 +20,7 @@ But I know there is a lot of confusion regarding the "_this_" keyword and I did 
 
 Let's start simple
 
-I am assuming that you guys know what the "window" object because the "_this_" keyword is all revolving around objects and things like that so if you don't please learn about it here or anywhere else and come back
+I am assuming that you guys know what the "window" object is, because the "_this_" keyword is all revolving around objects and things like that so if you don't please learn about it here or anywhere else and come back
 
 Now when you type in your console
 
@@ -42,7 +42,7 @@ Let's understand this a little better by an example
 
 ```javascript
 function hello() {
-	console.log(this);
+  console.log(this);
 }
 hello(); // the output will be the window object window.hello()
 ```
@@ -53,7 +53,7 @@ We have made a function hello() and inside the function, we have console.log(thi
 
 The output will be the window object, but how?
 
-See the _"this"_ keyword always refers to the object in which it is defined so the
+See the _"this"_ keyword always refers to the object in which it is to be defined so the
 
 _"this"_ keyword is the object the function is property of"
 
@@ -65,10 +65,10 @@ Let's see another example
 
 ```javascript
 const singer = {
-	name: "Joy",
-	sing() {
-		return "ullaa " + this.name;
-	},
+  name: "Joy",
+  sing() {
+    return "ullaa " + this.name;
+  },
 };
 singer.sing(); // ullaa Joy
 ```
@@ -91,13 +91,13 @@ Here is another example for you to understand better
 
 ```javascript
 const singer = {
-	name: "Joy",
-	sing() {
-		return "ullaa " + this.name;
-	},
-	singAgain() {
-		return this.sing() + "hahaha";
-	},
+  name: "Joy",
+  sing() {
+    return "ullaa " + this.name;
+  },
+  singAgain() {
+    return this.sing() + "hahaha";
+  },
 };
 singer.sing(); // ullaa Joy
 singer.singAgain(); // ulla Joy hahaha
@@ -118,18 +118,18 @@ Let's see the second part
 
 ```javascript
 function helper() {
-	console.log(this.name);
+  console.log(this.name);
 }
 
 const name = "Jasprit";
 const worker = {
-	name: "Jessica",
-	helper: helper,
+  name: "Jessica",
+  helper: helper,
 };
 
 const worker1 = {
-	name: "Jason",
-	helper: helper,
+  name: "Jason",
+  helper: helper,
 };
 
 helper(); //Jasprit
@@ -159,14 +159,14 @@ Let's see how
 
 ```javascript
 const singer = {
-	name: "Joy",
-	sing() {
-		console.log("1", this);
-		var singAgain = function () {
-			console.log("2", this);
-		};
-		singAgain();
-	},
+  name: "Joy",
+  sing() {
+    console.log("1", this);
+    var singAgain = function () {
+      console.log("2", this);
+    };
+    singAgain();
+  },
 };
 
 singer.sing();
@@ -198,14 +198,14 @@ Using the previous example
 
 ```javascript
 const singer = {
-	name: "Joy",
-	sing() {
-		console.log("1", this);
-		var singAgain = () => {
-			console.log("2", this);
-		};
-		singAgain();
-	},
+  name: "Joy",
+  sing() {
+    console.log("1", this);
+    var singAgain = () => {
+      console.log("2", this);
+    };
+    singAgain();
+  },
 };
 
 singer.sing();
@@ -217,15 +217,15 @@ Here the first and the second console.log( ) will have the same value which is e
 
 ```javascript
 const singer = {
-	name: "Joy",
-	sing() {
-		console.log("1", this);
-		var self = this;
-		var singAgain = function () {
-			console.log("2", self);
-		};
-		singAgain();
-	},
+  name: "Joy",
+  sing() {
+    console.log("1", this);
+    var self = this;
+    var singAgain = function () {
+      console.log("2", self);
+    };
+    singAgain();
+  },
 };
 
 singer.sing();
@@ -237,14 +237,14 @@ As you can see from the above example we have stored the value of the _"this"_ k
 
 ```javascript
 const singer = {
-	name: "Joy",
-	sing() {
-		console.log("1", this);
-		var singAgain = function () {
-			console.log("2", this);
-		};
-		return singAgain.bind(this);
-	},
+  name: "Joy",
+  sing() {
+    console.log("1", this);
+    var singAgain = function () {
+      console.log("2", this);
+    };
+    return singAgain.bind(this);
+  },
 };
 
 singer.sing()();
