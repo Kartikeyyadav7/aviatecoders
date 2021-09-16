@@ -12,11 +12,9 @@ layout: blog
 
 <!--StartFragment-->
 
-Closures is an important topic when it comes to JS and it has become so popular that even other big programming languages are adopting the same
+Closures is an important topic when it comes to JS so let's understand it in detail
 
-To understand closure we first need to have a good knowledge of functions and lexical scoping because closure is dependent on that
-
-You might be using closures without even knowing about it so let's see what closures are why it is such a cool and amazing concept in JS
+To understand closure we first need to have a good knowledge of functions and lexical scoping because closure is dependent on these concepts
 
 To start I will explain about functions and higher-order functions so if you already know about it you can directly go to the closure part
 
@@ -37,10 +35,10 @@ We know how to call functions
 
    ```javascript
    const obj = {
-     name: "Jett",
-     speed() {
-       console.log("Woos");
-     },
+   	name: "Jett",
+   	speed() {
+   		console.log("Woos");
+   	},
    };
    obj.speed();
    ```
@@ -62,11 +60,13 @@ We know how to call functions
    four(4);
    ```
 
-We know that whenever a function is called or invoked it creates an execution context and that execution context consists of the "this" keyword, the "arguments" keyword, and finally the variable environment
+We know that whenever a function is invoked it creates an execution context and that execution context consists of the "this" keyword, the "arguments" keyword, and finally the variable environment, if you want to know more about execution context do refer my article [here](https://www.aviatecoders.com/javascript/execution-context-lexical-environment-scope-chain)
+
+A important thing to know about functions is that
 
 > **_Functions are a special type of object which are called callable objects in JS_**
 
-Why you ask, well we can back that claim up because if you imagine a box with the name of the function and some code with three properties - call, apply and bind
+Why you ask, because if you imagine a box with the name of the function and some code with three properties - call, apply and bind
 
 ![Function](/blog/what-is-closures-in-javascript/closure-1.png "Inside of the function")
 
@@ -80,7 +80,7 @@ Now how does this concern us, well if functions are objects then we can store th
 
 > **_Functions are first-class citizens in JS_**
 
-What does that means, well three things back that claim
+What does that means is
 
 1.We can store a function into a variable
 
@@ -92,10 +92,10 @@ var greet = function () {};
 
 ```javascript
 function greet(fn) {
-  fn();
+	fn();
 }
 greet(function () {
-  console.log("hello");
+	console.log("hello");
 });
 ```
 
@@ -103,9 +103,9 @@ greet(function () {
 
 ```javascript
 function greet() {
-  return function () {
-    console.log("Hi there");
-  };
+	return function () {
+		console.log("Hi there");
+	};
 }
 
 greet()();
@@ -115,53 +115,55 @@ So basically what I am trying to say is function can do pretty much everything o
 
 ### Higher-Order Functions (HOF)
 
-A HOF is a function that can return a function or a function that can take function for an arguments as you have seen in above examples
+A HOF is a function that can return a function or a function that can take function as an arguments
 
-And we also know about the lexical scoping in JS and if you don't, then you can refer to [](https://developersdomain.netlify.app/execution-context-lexical-environmenet-scope-chain)[this](https://www.aviatecoders.com/execution-context-lexical-environmenet-scope-chain) article but in short, let me tell you
+And we also know about the lexical scoping in JS and if you don't, then you can refer to [here](https://www.aviatecoders.com/javascript/execution-context-lexical-environment-scope-chain) article but in brief,
 
-Lexical scoping or static scoping means the available variable data and functions are dependent on where the function is defined
+Lexical scoping or static scoping means the available variable data and functions are dependent on where the function is defined and with that we are now ready to understand the concept of closures
 
 ## Closures
 
-Now finally to explain Closures let's start with an example
-
 ```javascript
 function hello() {
-  console.log("greetings");
-  var a = "hi";
-  return function b() {
-    var b = "hi there";
-    return function c() {
-      var c = "hello there";
-      return `${a} ${b} ${c}`;
-    };
-  };
+	console.log("greetings");
+	var a = "hi";
+	return function b() {
+		var b = "hi there";
+		return function c() {
+			var c = "hello there";
+			return `${a} ${b} ${c}`;
+		};
+	};
 }
 
 hello()()(); // hi hi there hello there
 ```
 
-Now what has happened here, well I wrote the function hello and then declared a variable and returned another function which indeed returns another function, and finally, I accessed all the variables at the end and returned it
+Let's understand how the code works here
 
 Well as you guys know that when function hello is called it is pushed onto the stack and after it returns another function it gets popped off the stack (and if a function gets popped off the stack then their variable environment gets destroyed) then function b comes onto the stack return a function and again pops off the stack
 
 Finally, function c comes and return all the variables that were defined while in function hello and b
 
-But didn't I just said that those functions were popped off the stack and but then too we somehow have access to their variable
+But didn't I just said that those functions were popped off the stack , so how does function c has the values of the variables inside it , because as we know that when ever the function gets popped off the stack we don't have access to their variable environment
 
-And this concept of accessing the variables even if the function is popped off the stack which returning a function is called closure
+And this concept of accessing the variables even if the function is popped off the stack which returning a function is called _*closure*_
 
-What happens is the first time when the JS engine parses the code it sees that the variables are mentioned even inside the function which is being returned and so because of that it just stores the variable into a contained called closure and when the function is being called then when the JS engine gets its value from the closure box and puts it in and runs it
+Let dive deep
 
-This is one of the coolest parts of JS and it can have many uses such they can be memory efficient and use encapsulation
+What happens is that the first time when the JS engine parses the code it sees that the variables are mentioned even inside the function which is being returned and so because of that it just stores the variable into a contained called closure and when the function is being called which other functions are returned then when the JS engine gets the values of the varialbes from the closure box and returns the function
+
+Now this allows us to have uses such as memory efficiency and encapsulation
+
+Let's see how things can be memory efficient
 
 ### Memory efficient
 
 ```javascript
 function work(index) {
-  const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
-  console.log("created");
-  return arr[index];
+	const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
+	console.log("created");
+	return arr[index];
 }
 
 work(55); // created
@@ -169,17 +171,17 @@ work(99); //created
 work(800); // created :)
 ```
 
-Here we have created a function that creates a new Array of 7000 elements with ":)" and finally return it will give index well this process takes time if we call it again and again and is not very memory efficient
+Here we have created a function that creates a new Array of 7000 elements with ":)" and finally return it, well this process takes time if we call it again and again and is not very memory efficient
 
 What we can do instead is
 
 ```javascript
 function work(index) {
-  const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
-  console.log("created");
-  return function () {
-    return arr[index];
-  };
+	const arr = new Array(7000).fill(":)"); // create new array with 7000 elements of :)
+	console.log("created");
+	return function () {
+		return arr[index];
+	};
 }
 
 const workHard = work();
@@ -193,7 +195,9 @@ Here even if we call the workHard function many times it will give only one outp
 
 ### Encapsulation
 
-Also with the help of closure, we can use encapsulation which means is a process of bundling the data (i.e. variables) with the functions acting on that data as you have seen in the previous examples
+Also with the help of closure, we can use encapsulation which means is a process of bundling the data (i.e. variables) and methods within the functions
+
+We have covered the most part here , but if you think we missed something or we have some error then please suggest and give us feedback, we would love to know your thoughts and ideas
 
 Was the article helpful? Do you have any doubts? Any topic you would like us to cover?
 
