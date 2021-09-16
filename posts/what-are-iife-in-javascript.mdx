@@ -16,16 +16,16 @@ IIFE (Immediately Invoked Function Expression)
 
 ONE of the important concepts of JavaScript is IIFE and so we will try to make you guys understand what it is and how it is useful
 
-From the things we have learned about execution context and scoping (refer to the previous blog [here](https://www.aviatecoders.com/execution-context-lexical-environmenet-scope-chain)) you might have noticed some issue and the problem is that whenever we define a variable we have to be careful to not repeat the same name twice or in other words avoiding namespace collisions in the global execution context
+From the things we have learned about execution context and scoping (refer to the previous blog [here](https://www.aviatecoders.com/javascript/execution-context-lexical-environment-scope-chain)) you might have noticed some issue and the problem is that whenever we define a variable we have to be careful to not repeat the same name twice or in other words avoiding namespace collisions in the global execution context
 
 Now this is not a big problem if you consider a small size application but when our application becomes big and when we have multiple developers working on the same project and we have multiple JS files, this problem can be faced very frequently.
 
 Let's see why global variables are bad
 
-1. First if we define too many variables into the global scope we might end up filling our memory heap with so much data and it could crash our browser
+1. First, if we define too many variables into the global scope we might end up filling our memory heap with so much data and it could crash our browser
 2. The second reason is that even if we don't have many variables there comes a problem like if we define the name of the variable same because it might happen so it will lead to other problems like changing the previous names actual data and this results to many bugs
 
-Even if we use different script tags and different Js files it all comes down to a single file and having the same names for the variable will lead to many bugs and problems which pollutes the global namespace
+Even if we use different script tags and different JS files it all comes down to a single file and having the same names for the variable will lead to many bugs and problems which pollutes the global namespace
 
 But that's where IIFE comes which are Immediately Invoked Function Expression
 
@@ -34,7 +34,7 @@ by reading the full form you might have thought what the heck is this so let me 
 ```javascript
 //IIFE
 (function () {
-  //code
+	//code
 })();
 ```
 

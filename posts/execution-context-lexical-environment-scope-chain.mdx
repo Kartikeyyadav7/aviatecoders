@@ -18,17 +18,17 @@ Let's get started
 
 ## **Execution Context**
 
-Now we know about the call stack (if you don't please refer to the last blog post [here](https://www.aviatecoders.com/how-javascript-works)) and we know that functions that are called goes onto the call stack and after returning the functions they are popped off the call stack and it gets empty
+Now we know about the call stack (if you don't please refer to the last blog post [here](https://www.aviatecoders.com//javascript/how-javascript-works)) and we know that functions that are called goes onto the call stack and after returning the functions they are popped off the call stack and it gets empty
 
 _We can say that every function that goes into the call stack has its execution context_
 
 ```javascript
 function hello() {
-  return "Hey guys";
+	return "Hey guys";
 }
 
 function greetings() {
-  return hello();
+	return hello();
 }
 
 greetings();
@@ -66,20 +66,20 @@ Let's understand this with an example
 
 ```javascript
 function hello() {
-  console.log("hell");
-  const a = 10;
+	console.log("hell");
+	const a = 10;
 }
 
 function greet() {
-  console.log("greet");
-  const b = 20;
-  hello();
+	console.log("greet");
+	const b = 20;
+	hello();
 }
 
 function start() {
-  console.log("starting greet");
-  const c = 30;
-  greet();
+	console.log("starting greet");
+	const c = 30;
+	greet();
 }
 
 const d = 40;
@@ -111,17 +111,17 @@ Now how it does that well depends majorly on where the function is defined so if
 
 ```javascript
 function hello() {
-  console.log("hell");
+	console.log("hell");
 }
 
 function greet() {
-  console.log("greet");
-  hello();
+	console.log("greet");
+	hello();
 }
 
 function start() {
-  console.log("starting greet");
-  greet();
+	console.log("starting greet");
+	greet();
 }
 ```
 
@@ -135,15 +135,15 @@ But in this example
 
 ```javascript
 function start() {
-  console.log("hell");
-  var a = "a";
-  return function hello() {
-    var b = "b";
-    return function greet() {
-      var c = "c";
-      return "Ok";
-    };
-  };
+	console.log("hell");
+	var a = "a";
+	return function hello() {
+		var b = "b";
+		return function greet() {
+			var c = "c";
+			return "Ok";
+		};
+	};
 }
 
 start(); // this will invoke function hello()
@@ -183,11 +183,11 @@ eg
 
 ```javascript
 if (5 > 4) {
-  var secret = "555";
+	var secret = "555";
 }
 
 function secret() {
-  var secret2 = "555";
+	var secret2 = "555";
 }
 
 //In javascript we can access the secret variable from here like outside of the if statement
