@@ -103,7 +103,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 				{/* mobile menu */}
 
 				{toggle === true ? (
-					<div className="sidebar md:hidden z-10  md:-translate-x-full  bg-[#fefefe] bg-opacity-90 dark:bg-[#1C2228] font-medium inset-y-0 left-0 transform transition duration-200 ease-in-out  w-64 space-y-6 py-7 px-2 absolute top-0 h-full ">
+					<div className="sidebar fixed md:hidden h-screen z-10  md:-translate-x-full  bg-[#fefefe] bg-opacity-90 dark:bg-[#1C2228] font-medium inset-y-0 left-0 transform transition duration-200 ease-in-out  w-full space-y-6 py-7 px-2  top-0  ">
 						{/* nav */}
 						<nav>
 							<Link href="/">
