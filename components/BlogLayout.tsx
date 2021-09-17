@@ -10,7 +10,7 @@ interface Props {
 const BlogLayout: React.FC<Props> = ({ children, frontMatter }) => {
 	return (
 		<>
-			<div className="text-center m-8 mt-32 mb-32 font-semibold text-3xl">
+			<div className="text-center m-8 mt-32 mb-32 pt-20 font-semibold text-3xl">
 				{frontMatter.title}
 			</div>
 			<main className="max-w-prose m-auto dark:prose-dark prose  leading-8 font-medium ">

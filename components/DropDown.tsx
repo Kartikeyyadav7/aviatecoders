@@ -35,7 +35,7 @@ const DropDown: React.FC<DropDownProps> = () => {
 					<Link href="/blog">Blog</Link>
 					<ChevronDown />
 				</button>
-				<div className="absolute hidden bg-white rounded-md dark:bg-black pt-1 group-hover:block">
+				<div className="absolute hidden backdrop-filter backdrop-blur-lg bg-opacity-90 bg-white dark:bg-black dark:bg-opacity-0 firefox:bg-opacity-90 z-auto rounded-md  pt-1 group-hover:block">
 					<div>
 						<Link href="/blog/javascript">
 							<a className="rounded-t hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white hover:font-medium py-2 px-4 block whitespace-no-wrap">
@@ -53,7 +53,7 @@ const DropDown: React.FC<DropDownProps> = () => {
 					</div>
 					<div>
 						<Link href="/blog/reactnative">
-							<a className="rounded-t hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white hover:font-medium py-2 px-4 block whitespace-no-wrap">
+							<a className="rounded-t hover:bg-gray-100  dark:hover:bg-gray-700 hover:text-black dark:hover:text-white hover:font-medium py-2 px-4 block whitespace-no-wrap">
 								React Native
 							</a>
 						</Link>

@@ -8,7 +8,7 @@ export default function ContactUs() {
 	const [state, handleSubmit] = useForm("mnqlgkqk");
 	if (state.succeeded) {
 		return (
-			<div className="w-full max-w-screen-sm flex justify-center items-center  m-auto mt-20   rounded-lg shadow-x">
+			<div className="w-full max-w-screen-sm flex justify-center items-center  m-auto mt-20 pt-14  rounded-lg shadow-x">
 				<div className="rounded overflow-hidden shadow-lg">
 					<div className="px-6 py-4">
 						<div className="font-bold text-xl mb-2">Thank You For Feedback</div>

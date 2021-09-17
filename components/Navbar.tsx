@@ -45,7 +45,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 		<div>
 			{/* navbar goes here */}
 			<nav>
-				<div className="max-w-screen-xl mx-auto px-4">
+				<div className="max-w-screen-xl fixed top-0 inset-x-0 h-20 z-50 backdrop-filter backdrop-blur-lg bg-opacity-0 bg-white dark:bg-black dark:bg-opacity-0 mx-auto px-4 firefox:bg-opacity-90">
 					<div className="flex justify-between">
 						<div className="flex space-x-4">
 							{/* logo */}

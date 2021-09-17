@@ -36,7 +36,7 @@ const ReactNative: React.FC<ReactNativeProps> = ({ posts }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className="mr-20 font-semibold text-2xl ml-8  mb-5">
+			<div className="mr-20 font-semibold pt-20 text-2xl ml-8  mb-5">
 				<h1>ReactNative</h1>
 			</div>
 			<div className="flex flex-wrap ml-5 ">

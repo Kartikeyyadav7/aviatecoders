@@ -40,7 +40,7 @@ const Index: React.FC<BlogProps> = ({ posts }) => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<div className="mr-20 font-semibold text-2xl mb-5 flex items-center">
+			<div className="mr-20 font-semibold text-2xl mb-5 pt-20 flex items-center">
 				<div className="opacity-0 hover:opacity-100 hover:transition hover:duration-300 hover:ease-in-out">
 					<IconLink />
 				</div>
