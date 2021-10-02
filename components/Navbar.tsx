@@ -131,11 +131,11 @@ const Navbar: React.FC<NavbarProps> = () => {
 									React Native
 								</a>
 							</Link>
-							<Link href="/feed">
+							{/* <Link href="/feed">
 								<a className="block py-2.5 px-4 rounded transition duration-200 ">
 									Feed
 								</a>
-							</Link>
+							</Link> */}
 
 							<div className=" flex items-center space-x-1">
 								{theme === "dark" ? (

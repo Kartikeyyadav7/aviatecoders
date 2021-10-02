@@ -21,11 +21,11 @@ const Footer = () => {
 											Blog
 										</a>
 									</Link>
-									<Link href="/feed">
+									{/* <Link href="/feed">
 										<a className="font-normal text-base hover:text-gray-400">
 											Feed
 										</a>
-									</Link>
+									</Link> */}
 									<Link href="/contact">
 										<a className="font-normal text-base hover:text-gray-400">
 											Contact
