@@ -1,18 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAlert } from "react-alert";
-import { useForm, ValidationError } from "@formspree/react";
+import { useFormspark } from "@formspark/use-formspark";
+
+const FORMSPARK_FORM_ID = process.env.NEXT_PUBLIC_FORM_SUBMISSION;
 
 export default function Modal() {
 	const [showModal, setShowModal] = React.useState(false);
-	const [state, handleSubmit] = useForm("mnqlgkqk");
+	const [submit, submitting] = useFormspark({
+		formId: FORMSPARK_FORM_ID,
+	});
+
+	const initialState = {
+		firstName: "",
+		lastName: "",
+		email: "",
+	};
+
+	const [message, setMessage] = useState(initialState);
+
 	const alert = useAlert();
-	const submitButton = () => {
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		await submit({ message });
 		setShowModal(false);
 		alert.success("Welcome, Aviator");
 	};
-	if (state.succeeded) {
-		return <></>;
-	}
+
+	const handleInput = (e) => {
+		const inputName = e.currentTarget.name;
+		const value = e.currentTarget.value;
+
+		setMessage((prev) => ({ ...prev, [inputName]: value }));
+	};
+
+	// const submitButton = () => {
+	// 	setShowModal(false);
+	// 	alert.success("Welcome, Aviator");
+	// };
+	// if (state.succeeded) {
+	// 	return <></>;
+	// }
 	return (
 		<>
 			<button
@@ -59,7 +86,7 @@ export default function Modal() {
 								</div>
 								{/*body*/}
 
-								<form onSubmit={handleSubmit}>
+								<form onSubmit={onSubmit}>
 									<div className="grid max-w-xl grid-cols-2 gap-4 m-auto p-2">
 										<div className="col-span-2 lg:col-span-1">
 											<div className=" relative ">
@@ -70,18 +97,32 @@ export default function Modal() {
 													name="firstName"
 													className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#1E2E46] focus:border-transparent"
 													placeholder="First Name"
+													value={message.firstName}
+													onChange={handleInput}
 												/>
 											</div>
 										</div>
+										<input
+											type="hidden"
+											name="_email.subject"
+											value="Someone subscribed to your mail list"
+										/>
+										<input
+											type="hidden"
+											name="_email.template.title"
+											value="Someone subscribed to your mailing list"
+										/>
 										<div className="col-span-2 lg:col-span-1">
 											<div className=" relative ">
-												<label htmlFor="lastname"></label>
+												<label htmlFor="lastName"></label>
 												<input
-													type="lastname"
-													id="lastname"
-													name="lastname"
+													type="lastName"
+													id="lastName"
+													name="lastName"
 													className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#1E2E46] focus:border-transparent"
 													placeholder="Last Name"
+													value={message.lastName}
+													onChange={handleInput}
 												/>
 											</div>
 										</div>
@@ -94,12 +135,14 @@ export default function Modal() {
 													name="email"
 													className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#1E2E46] focus:border-transparent"
 													placeholder="Email"
+													value={message.email}
+													onChange={handleInput}
 												/>
-												<ValidationError
+												{/* <ValidationError
 													prefix="Email"
 													field="email"
 													errors={state.errors}
-												/>
+												/> */}
 											</div>
 										</div>
 									</div>
@@ -117,8 +160,9 @@ export default function Modal() {
 											className="bg-[#1E2E46]  text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
 											// type="button"
 											type="submit"
-											disabled={state.submitting}
-											onClick={submitButton}
+											// disabled={state.submitting}
+											disabled={submitting}
+											// onClick={submitButton}
 										>
 											Subscribe
 										</button>

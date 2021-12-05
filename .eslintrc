@@ -1,6 +1,6 @@
 {
 	"rules": {
-		"next/no-img-element": "off",
+		"@next/next/no-img-element": 0,
 		"react/no-unescaped-entities": "off",
 		"react/display-name": "off"
 	},
