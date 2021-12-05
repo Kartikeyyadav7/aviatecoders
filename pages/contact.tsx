@@ -4,7 +4,8 @@ import Layout from "../components/Layout";
 import { useFormspark } from "@formspark/use-formspark";
 import { useRouter } from "next/router";
 
-const FORMSPARK_FORM_ID = process.env.NEXT_PUBLIC_FORM_SUBMISSION;
+const FORMSPARK_FORM_ID =
+	process.env.NEXT_PUBLIC_FORM_SUBMISSION ?? "I don't think this is defined";
 
 export default function ContactUs() {
 	const [submit, submitting] = useFormspark({

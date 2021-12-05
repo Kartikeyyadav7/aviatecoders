@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useAlert } from "react-alert";
 import { useFormspark } from "@formspark/use-formspark";
 
-const FORMSPARK_FORM_ID = process.env.NEXT_PUBLIC_FORM_SUBMISSION;
+const FORMSPARK_FORM_ID =
+	process.env.NEXT_PUBLIC_FORM_SUBMISSION ?? "I don't think this is defined";
 
 export default function Modal() {
 	const [showModal, setShowModal] = React.useState(false);
